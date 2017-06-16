@@ -1,0 +1,17 @@
+Your id is <b><%= user._id %></b> <br />
+<form method="post" action="/add-challenge">
+  <input type="text" name="author_id" value="<%= user._id %>" style="display:none" />
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea name="description" id="description" class="form-control" rows="5"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="category">Category</label>
+    <input type="category" name="category" value="Community Development" id="category" class="form-control"  />
+  </div>
+  <button type="submit">Add Challenge</button>
+</form>

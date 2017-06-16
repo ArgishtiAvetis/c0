@@ -1,0 +1,8 @@
+<% challenges.forEach((challenge) => { %>
+  <div id="c<%= challenge._id %>">
+    <h2><%= challenge.title %></h2>
+    <span class="delete" data-id="<%= challenge._id %>">Delete</span>
+    <hr />
+  </div>
+<% }) %>
+<div id="div1" data-user="<%= user._id %>"></div>

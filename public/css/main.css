@@ -1,0 +1,590 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600|Montserrat|Benton);
+
+h1, h2, h3, h4, h5, h6, p {
+	font-family: 'Raleway';
+}
+
+nav.navbar {
+    margin: 0;
+    border: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background:  white;
+    border-radius: 0;
+    height: ;
+    padding: 5px 5px;
+}
+
+.nav li .search {
+	margin-top: ;
+	margin-left: 15px;
+	font-weight: bold;
+}
+
+div.menu-search {
+	padding: 15px 15px;
+	width: 350px;
+
+}
+
+.nav li a {
+	margin-top: 10px;
+	font-size: 20px;
+}
+
+.nav li.dropdown.open  a {
+	background: none;
+}
+
+.nav li a:hover {
+	background: none;
+}
+
+.navbar-brand {
+	margin: auto;
+	margin-bottom: 5px;
+}
+
+.logo {
+	padding-left: 75px;
+}
+
+.navbar-brand img {
+	max-height: 35px;
+	margin: auto;
+}
+
+.btn-start-challenge {
+	background: /*#86acd7#*/#2196F3;
+	padding: 5px 7px;
+	max-height: ;
+	color: white;
+	font-weight: bold;
+
+
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.nav li a.btn-start-challenge {
+	border: 2px solid #2196F3;
+}
+
+.nav li a.btn-start-challenge:hover {
+	background: white;
+	color: #2196F3;
+}
+
+.nav li a.btn-become-thinker {
+	border: 2px solid #2E7D32;
+}
+
+.nav li a.btn-become-thinker:hover {
+	background: white;
+}
+
+.btn-become-thinker {
+	background: #2E7D32;
+	padding: 5px 7px;
+	max-height: ;
+	color: white;
+	font-weight: bold;
+	margin-right: 10px;
+
+
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+li.top-right-buttons {
+	padding: 0;
+	margin: 0;
+}
+
+li.top-right-buttons a {
+	padding: 7px 10px;
+}
+
+.prospect-dropdown {
+	width: 750px;
+	border: none;
+}
+
+.drop-category {
+	font-size: 20px;
+}
+
+.drop-category-ul {
+	list-style-type: none;
+	text-align: left;
+}
+
+.drop-category-ul li {
+	margin: 5px 0;
+}
+
+.drop-category-ul a {
+	font-family: "Raleway","Helvetica","sans-serif";
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    cursor: pointer;
+    color:  #000099;
+    padding-top: 20px;
+}
+
+.drop-category-ul a:hover {
+	text-decoration: none;
+	color:  #009999;
+}
+
+.navbar-search {
+	width: 150px;
+	margin-top: 15px;
+	margin-left: 15px;
+}
+
+.navbar-search input {
+	width: 200px;
+	transition: width 0.7s;
+    -webkit-transition: width 0.7s; /* Safari 3.1 to 6.0 */
+}
+
+.navbar-search input:focus {
+	width: 350px;
+}
+
+
+
+/* INTRO ROW */
+
+.intro-row {
+	background: url('https://images.pexels.com/photos/315658/pexels-photo-315658.jpeg?h=&auto=compress&cs=tinysrgb') fixed;/*url('https://images.pexels.com/photos/132340/pexels-photo-132340.jpeg?h=&auto=compress&cs=tinysrgb');*/
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	padding-bottom: 75px;
+	padding-top: 100px;
+}
+
+.intro-text {
+	color: white;
+	text-shadow: -5px 0 5px #000;
+}
+
+#intro-slogan {
+	font-size: 70px;
+	font-weight: 700;
+}
+
+#intro-hook {
+	font-size: 45px;
+	font-weight: 600;
+}
+
+#intro-join {
+	font-size: 35px;
+	font-weight: 600;
+}
+
+.btn-intro-join {
+	display: block;
+	background: #2E7D32;
+	padding: 10px 15px;
+	margin:auto;
+	color: white;
+	font-size: 20px;
+	font-weight: 700;
+	border: 2px solid #2E7D32;
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin-top: 20px;
+    max-width: 200px;
+}
+
+.btn-intro-join:hover {
+	display: block;
+	background: white;
+	padding: 10px 15px;
+	margin:auto;
+	color: #2E7D32;
+	border: 2px solid #2E7D32;
+	margin-top: 20px;
+}
+/* /// Intro row */
+
+
+/* PICKS row */
+
+.picks-row {
+	margin-top: 35px;
+
+	margin-bottom: 15px;
+
+}
+
+.item {
+	margin: 25px 0;
+	border: 1px solid rgba(0,0,0,0.2);
+	background: white;
+	padding-bottom: 15px;
+	height: 425px;
+}
+
+.item-category {
+	margin: 5px;
+}
+
+.thumb-in-cat {
+	font-size: 17px;
+	margin-top: 5px;
+}
+
+.item:hover {
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.item img {
+	margin: auto;
+}
+
+.thumbnail-title {
+	margin-top: 5px;
+	margin-bottom: 0;
+	padding: 0;
+	font-size: 25px;
+	text-align: center;
+}
+
+.thumbnail-title a:hover {
+	text-decoration: none;
+}
+
+.item-descr {
+	padding: 2px 10px;
+}
+
+.thumbnail-by {
+	font-size: 19px;
+	text-align: left
+}
+
+div.progress {
+	margin-bottom: 5px;
+}
+
+.thumbnail-category {
+	text-align: center;
+	font-size: 19px;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+/* // PICKS row */
+
+
+/* homepage categories row */
+
+.homepage-categories-row {
+	margin-bottom: 0px;
+}
+
+.homepage-category-title a {  }
+
+.homepage-category-title a:hover {
+	text-decoration: none;
+}
+
+.col-view-all-category {
+	margin: 25px 0;
+}
+
+.btn-view-all-category {
+
+	background: #2E7D32;
+	padding: 5px 10px;
+	margin:auto;
+	color: white;
+	font-size: 17px;
+	font-weight: 700;
+	border: 2px solid #2E7D32;
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.btn-view-all-category:hover {
+	background: white;
+	color: #2E7D32;
+}
+
+/* // homepage categories row */
+
+/* last call to action */
+
+.last-call-action {
+	background: white;
+	color: black;
+	padding: 35px 0;
+	margin-bottom: 0px;
+}
+
+.last-call-action .get-started {
+	font-weight: 700;
+}
+
+.last-call-action .get-started-info {
+	margin-bottom: 25px;
+}
+
+.last-call-action a.btn-start-challenge {
+	border: 2px solid #2196F3;
+	padding: 7px 15px;
+	font-size: 20px;
+	margin: 15px;
+}
+
+.last-call-action a.btn-start-challenge:hover {
+	background: white;
+	color: #2196F3;
+}
+
+.last-call-action a.btn-start-thinker {
+	border: 2px solid #2196F3;
+	padding: 7px 15px;
+	font-size: 20px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    font-weight: 700;
+    margin: 15px;
+}
+
+.last-call-action a.btn-start-thinker:hover {
+	background: #2196F3;
+	color: white;
+}
+/* // last call to action */
+
+
+/* footer row */
+
+.footer-row {
+	padding: 35px 55px;
+	background: #304FFE;
+	color: white;
+}
+
+.footer-row span {
+	color: white;
+}
+
+.footer-follow span {
+	font-size: 30px;
+	margin: 5px 10px;
+}
+
+.footer-follow span:first-of-type {
+	margin-left: 0;
+}
+
+.footer-subscribe form {
+	vertical-align: top;
+}
+
+.footer-subscribe input {
+	width: ;
+}
+
+.btn-subscribe {
+	border: 2px solid #2E7D32;
+	padding: 5px 10px;
+	font-size: 17px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    font-weight: 700;
+    margin: 15px;
+    color: #2E7D32;
+    background: white;
+}
+
+.btn-subscribe:hover {
+	background: #2E7D32;
+	color: white;
+}
+
+.footer-row a {
+	color: white;
+}
+
+.footer-row a:hover {
+	text-decoration: none;
+}
+
+.copyright {
+	border-top: #eee;
+}
+
+
+/* // footer row */
+
+
+/* CHALLENGES PAGE */
+
+
+.filters-row {
+	margin-top: 100px;
+	margin-bottom: 30px;
+}
+
+.filters-row h1 {
+	color: black;
+	font-weight: 700;
+	margin-bottom: 30px;
+}
+
+.filters-div select {
+	padding: 15px 20px;
+	font-size: 25px;
+	margin: 0px 35px;
+	width: 300px;
+
+	border: 2px solid #2196F3;
+	color:  #2196F3;
+}
+
+.filters-div select:focus {
+    outline: none;
+}
+
+.filters-div select option {
+
+}
+
+.challenges {
+	padding: 0 75px;
+}
+
+/* // CHALLENGES PAGE */
+
+/* SINGLE CHALLENGE PAGE */
+
+.challenge-row {
+	margin-top: 125px;
+	margin-bottom: 10px;
+	padding: 0 45px;
+}
+
+#p-challenge-title {
+	font-size: 51px;
+	margin-top: 0;
+	color: black;
+	font-weight: 700;
+}
+
+#p-challenge-short {
+	font-size: 22px;
+}
+
+#p-challenge-challenger-img {
+	max-width: 125px;
+	margin: auto;
+}
+
+#p-challenge-challenger-name {
+	color: black;
+	font-weight: 700;
+}
+
+#p-progress-days {
+	color: black;
+	font-size: 20px;
+}
+
+.author-col {
+	margin: 15px 0;
+}
+
+#p-challenge-submit {
+	margin-top: 15px;
+}
+
+#p-challenge-submit span {
+	font-size: 55px;
+	margin: 0 10px;
+}
+
+.btn-submit-idea {
+	width: 200px;
+	padding: 10px 15px;
+	font-size: 25px;
+	font-weight: 700;
+}
+
+.green {
+	background: #2E7D32;
+	color: white;
+}
+
+button.green:hover {
+	color: white;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	-webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+}
+
+.challenge-body-row {
+	padding: 0 45px;
+	margin-bottom: 25px;
+}
+
+#p-challenge-body {
+	margin-top: 20px;
+	font-size: 25px;
+	color: black;
+}
+
+#p-challenge-submit-hook {
+	color: black;
+	font-weight: 700;
+}
+
+/* // SINGLE CHALLENGE PAGE */
+
+
+/* LOGIN PAGE - REGISTER PAGE*/
+
+.login-row, .signup-row, .home-row {
+	margin-top: 125px;
+	margin-bottom: 50px;
+}
+
+#login-intro {
+	font-size: 35px;
+	color: black;
+	font-weight: 700;
+}
+
+#login-intro-small {
+	font-size: 20px;
+}
+
+/* // LOGIN PAGE some REGISTER PAGE */
+
+.login-row {
+	margin-top: 100px;
+}
+
+.orSignup {
+	float:right;
+	margin-top: 10px;
+}
+
+.btn-social:hover {
+	color: white;
+}
+
+
+
+
+
+
+
+/**/

@@ -1,0 +1,101 @@
+<% include partials/header.ejs %>
+
+
+  <!-- <div class="row login-row">
+    <DIV class="col-md-2">
+      <h1>Sidebar</h1>
+    </DIV>
+    <DIV class="col-md-10">
+      <div class="col-md-12">
+        <h1>Welcome back!</h1>
+      </div>
+      <% for(let i = 0, len = errors.length; i < len; i++) { %>
+        error
+      <% } %>
+      <div class="col-md-4">
+        Your id is <b><%= user._id %></b> <br />
+        <form method="post" action="/add-challenge">
+          <input type="text" name="author_id" value="<%= user._id %>" style="display:none" />
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" class="form-control" rows="5"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <input type="category" name="category" value="Community Development" id="category" class="form-control"  />
+          </div>
+          <button type="submit">Add Challenge</button>
+        </form>
+      </div>
+      <div class="col-md-8 my_challenges">
+        <% challenges.forEach((challenge) => { %>
+          <div id="c<%= challenge._id %>">
+            <h2><%= challenge.title %></h2>
+            <span class="delete" data-id="<%= challenge._id %>">Delete</span>
+            <hr />
+          </div>
+        <% }) %>
+        <div id="div1" data-user="<%= user._id %>">
+
+        </div>
+      </div>
+    </DIV>
+  </div>-->
+  <div class="navbar-default sidebar" role="navigation" style="margin-top: 100px;">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="sidebar-search">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+                </div>
+                <!-- /input-group -->
+            </li>
+            <li>
+                <a href="/profile"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+            </li>
+            <li>
+                <a href="/profile/account"><i class="fa fa-bar-chart-o fa-fw"></i> My Account </a>
+
+            </li>
+            <li>
+                <a href="/profile/activity"><i class="fa fa-table fa-fw"></i> My Ideas </a>
+            </li>
+            <li>
+                <a href="/profile/add-challenge"><i class="fa fa-edit fa-fw"></i> Add Challenge </a>
+            </li>
+            <li>
+                <a href="/profile/challenges"><i class="fa fa-files-o fa-fw"></i> My Challenges </a>
+            </li>
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>
+<!-- /.navbar-static-side -->
+</nav>
+
+<div id="page-wrapper" style="margin-top: 100px;">
+  <% if (page === '') { %>
+    <% include profile/dashboard.ejs %>
+  <% } else if (page === 'account') { %>
+    <% include profile/account.ejs %>
+  <% } else if (page === 'add-challenge') { %>
+    <% include profile/add-challenge.ejs %>
+  <% } else if (page === 'activity') { %>
+    <% include profile/ideas.ejs %>
+  <% } else if (page === 'challenges') { %>
+    <% include profile/my-challenges.ejs %>
+  <% } %>
+</div>
+<!-- /#page-wrapper -->
+
+
+<% include partials/footer.ejs %>

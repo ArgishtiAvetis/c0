@@ -1,0 +1,73 @@
+<% include partials/header.ejs %>
+
+
+<div class="row challenge-row">
+	<div class="col-md-7">
+		<img src="https://challer.co/img/upload/Tengu-pech-zariadnoe-ustroistvo-ecotechnica-com-ua-2.jpg" alt="" class="img img-responsive">
+	</div>
+	<div class="col-md-5">
+		<div class="col-md-12">
+			<h1 id="p-challenge-title"><%= challenge.title %></h1>
+			<h4 id="p-challenge-short">Lorem ipsum dolor site amen adminisplit amet dolor sit. Amet doilor amet sit dolor sit amet lorem ipsum.  </h4>
+		</div>
+		<div class="col-md-12 author-col">
+			<div class="col-md-3">
+				<img src="https://placeholdit.imgix.net/~text?txtsize=66&txt=LOGO&w=350&h=250" class="img img-responsive img-circle" alt="" id="p-challenge-challenger-img">
+			</div>
+			<div class="col-md-9">
+				<h3 id="p-challenge-challenger-name">Facebook</h3>
+				<h4><a href="/">View Other Challenges by Facebook</a></h4>
+			</div>
+		</div>
+		<div class="col-md-12 progress-col">
+			<div class="progress">
+				<div class="progress-bar" role="progressbar" aria-valuenow="70"
+				  aria-valuemin="0" aria-valuemax="100" style="width:70%">
+					<span class="sr-only">70% Complete</span>
+				</div>
+			</div>
+			<span id="p-progress-days">33 days left</span>
+		</div>
+		<div class="col-md-12" id="p-challenge-submit">
+			<div class="col-md-12">
+				<h4>Submit an Idea or Share with your friends.</h4>
+			</div>
+			<div class="col-md-5">
+				<a class="btn btn-submit-idea green" href="/challenge/slug-slug-slug-153/application">Submit Idea</a>
+			</div>
+			<div class="col-md-7">
+				<a href=""><span class="fa fa-facebook-official"></span></a>
+				<a href=""><span class="fa fa-twitter-square"></span></a>
+				<a href=""><span class="fa fa-instagram"></span></a>
+				<a href=""><span class="fa fa-youtube"></span></a>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+<div class="row challenge-body-row">
+
+		<div class="col-md-8">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="">The Challenge</a></li>
+				<li><a href="">Files &amp; Resources</a></li>
+				<li><a href="">Submitted Solutions</a></li>
+			</ul>
+
+			<p id="p-challenge-body">
+        <%= challenge.description %>
+      </p>
+
+			<div class="text-center">
+				<h3 id="p-challenge-submit-hook">Have an Idea? Submit your Solution.</h3>
+				<button class="btn btn-submit-idea green">Submit Idea</button>
+			</div>
+
+		</div>
+		<div class="col-md-4">Sidebar</div>
+
+</div>
+
+<% include partials/footer.ejs %>
