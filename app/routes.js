@@ -1,8 +1,9 @@
 // app/routes.js
 module.exports = function(app, passport) {
-  var expressValidator = require('express-validator');
+    var expressValidator = require('express-validator');
 
     var Challenge = require('./models/challenge');
+    var User = require('./models/user');
     let isAuth;
     let errors = [];
 
@@ -50,6 +51,9 @@ module.exports = function(app, passport) {
 
     app.get('/c/:slug', function(req, res) {
       isAuth = (req.isAuthenticated()) ? true : false;
+
+
+
       Challenge.findOne({
         slug: req.params.slug
       })
@@ -57,6 +61,19 @@ module.exports = function(app, passport) {
           if (err) {
             res.send("Error has occured");
           } else {
+
+
+            Challenge.findById(challenge._id, function (err, challenge) {
+              if (err) return handleError(err);
+
+              challenge.views = challenge.views + 1;
+              challenge.save(function (err, updated) {
+                if (err) return handleError(err);
+                //res.send(updated);
+              });
+            });
+
+
             res.render('single-challenge', {
               challenge: challenge,
               isAuth: isAuth
@@ -125,6 +142,7 @@ module.exports = function(app, passport) {
         if (err) {
           res.send("Error has occured");
         } else {
+
           res.render('profile', {
               user : req.user, // get the user out of session and pass to template
               isAuth: true,
@@ -145,8 +163,29 @@ module.exports = function(app, passport) {
           if (err) {
             res.send("Error has occured");
           } else {
+
+            let name = '';
+            let email = '';
+
+            if (req.user.local.email) {
+              name = req.user.local.name;
+              email = req.user.local.email;
+            } else if (req.user.google.name) {
+              name = req.user.google.name;
+              email = req.user.google.email;
+            } else if (req.user.twitter.displayName) {
+              name = req.user.twitter.displayName;
+              email = req.user.twitter.email;
+            } else {
+              name = req.user.facebook.name;
+              email = req.user.facebook.email;
+            }
+
             res.render('profile', {
                 user : req.user, // get the user out of session and pass to template
+                id: req.user.id,
+                name: name,
+                email: email,
                 isAuth: true,
                 errors: errors,
                 challenges: challenges,
@@ -157,6 +196,24 @@ module.exports = function(app, passport) {
 
     });
 
+    app.post('/profile/edit-account', (req, res) => {
+      let id = req.body.a_n;
+      let name = req.body.name;
+      let email = req.body.email;
+      let country = req.body.country;
+
+      User.update({
+        _id: id
+      }, {
+        $set: {
+          local: {
+            name: name,
+            email: email
+          },
+          country: country
+        }
+      }, () => res.redirect('/profile/account'));
+    });
 
     // add a challenge
     app.post('/add-challenge', (req, res) => {

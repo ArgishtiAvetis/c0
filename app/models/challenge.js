@@ -11,6 +11,10 @@ var challengeSchema = mongoose.Schema({
   author_id: String,
   category: String,
   day_limit: Number,
+  views: {
+    type: Number,
+    default: 0
+  },
   is_active: {
     type: Boolean,
     default: true,

@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "dependencies": {
     "bcrypt-nodejs": "*",
@@ -15,6 +15,7 @@
     "express": "*",
     "express-session": "*",
     "express-validator": "^3.2.0",
+    "flag-icon-css": "^2.8.0",
     "method-override": "*",
     "mongoose": "*",
     "morgan": "*",
@@ -22,11 +23,7 @@
     "passport-facebook": "*",
     "passport-google-oauth": "*",
     "passport-local": "*",
-    "passport-twitter": "*",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1"
+    "passport-twitter": "*"
   },
   "keywords": [],
   "author": "",

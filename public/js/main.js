@@ -17,6 +17,7 @@ $(document).ready(function() {
         return false;
       };
   };
+
 });
       // fetch("/api/challenges/" + $('#div1').data('user')) // Call the fetch function passing the url of the API as a parameter
       //   .then((resp) => resp.json())

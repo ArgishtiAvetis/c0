@@ -4,6 +4,10 @@ h1, h2, h3, h4, h5, h6, p {
 	font-family: 'Raleway';
 }
 
+.margin-auto {
+	margin: auto;
+}
+
 nav.navbar {
     margin: 0;
     border: none;
@@ -581,9 +585,43 @@ button.green:hover {
 	color: white;
 }
 
+/**/
+
+/* Profile */
+
+#sidebar-challer-zone {
+	margin: 40px 0px 10px 0px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.panel-account {
+	margin-top: 50px;
+}
+
+.account-info b {
+	font-size: 25px;
+}
+
+.account-info span {
+	font-size: 20px;
+}
+
+.btn-interest {
+	font-size: 20px;
+	padding: 5px;
+}
+
+.edit-profile {
+	float: right;
+	cursor: pointer;
+}
 
 
+/* edit profile modal */
 
+
+/*  */
 
 
 
