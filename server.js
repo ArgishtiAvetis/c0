@@ -69,6 +69,10 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
+app.get('/googled6ab2d2a2c5cc94e.html', (req, res) => {
+  res.render('google');
+});
+
 app.get('/api/challenges/all', (req, res) => {
   Challenge.find({})
     .exec((err, challenges) => {

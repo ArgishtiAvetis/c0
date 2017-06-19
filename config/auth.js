@@ -16,7 +16,7 @@ module.exports = {
     'googleAuth' : {
         'clientID'      : '641407902867-lqjohc9qpf2fngi0bkb91dhh1ketr1hg.apps.googleusercontent.com',
         'clientSecret'  : 'PRobM3AZcEww_BuO3A9rPnwD',
-        'callbackURL'   : 'http://localhost:8080/auth/google/callback'
+        'callbackURL'   : 'https://challer001.herokuapp.com/auth/google/callback'
     }
 
 };
