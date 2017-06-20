@@ -24,6 +24,14 @@ nav.navbar {
 	font-weight: bold;
 }
 
+.navbar-toggle {
+	border: 2px solid #2196F3;
+}
+
+.navbar-toggle .icon-bar {
+	background: #2196F3;
+}
+
 div.menu-search {
 	padding: 15px 15px;
 	width: 350px;
