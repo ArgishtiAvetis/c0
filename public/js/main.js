@@ -1,6 +1,19 @@
 $(document).ready(function() {
   $('.delete').click(deleteChallenge);
 
+  if (screen.width < 768) {
+    $('.sidebar').addClass('hide');
+    $('.sidebar-toggle').removeClass('hide');
+
+    $('.sidebar-toggle').click(function() {
+      $('.sidebar').toggleClass('hide');
+    });
+
+  } else {
+    $('.sidebar').removeClass('hide');
+    $('.sidebar-toggle').addClass('hide');
+  }
+
 
   function deleteChallenge() {
     var isSure = confirm("Are you sure?");
