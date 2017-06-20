@@ -206,10 +206,8 @@ module.exports = function(app, passport) {
         _id: id
       }, {
         $set: {
-          local: {
-            name: name,
-            email: email
-          },
+          new_name: name,
+          new_email: email,
           country: country
         }
       }, () => res.redirect('/profile/account'));
