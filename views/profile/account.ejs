@@ -18,8 +18,12 @@
           <% } %>
           <hr />
           <span><b>Email: </b><%= email %></span><br />
-          <span><b>Country: </b><%= user.country %></span>
-          <span class="flag-icon flag-icon-<%= user.country.toLowerCase() %>"></span>
+          <span><b>Country:
+          <% if (user.country) { %>
+          </b><%= user.country %>
+          <% } %>
+          </span>
+          <% if (user.country) { %><span class="flag-icon flag-icon-<%= user.country.toLowerCase() %>"></span> <% } %>
           <br />
           <span><b>Interests: </b></span>
           <br />
@@ -49,7 +53,7 @@
                   <input type="hidden" value="<%= id %>" name="a_n" />
                   <div class="from-group">
                     <label for="name">Name</label>
-                    <input value="<%= name %>" type="text" name="name" id="name" class="form-control" />
+                    <input <% if (email) { %> value="<%= name %>" <% } %> type="text" name="name" id="name" class="form-control" />
                   </div>
                   <div class="from-group">
                     <label for="email">Email</label>
