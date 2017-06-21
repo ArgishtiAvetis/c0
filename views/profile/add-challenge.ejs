@@ -6,12 +6,20 @@ Your id is <b><%= user._id %></b> <br />
     <input type="text" name="title" id="title" class="form-control" />
   </div>
   <div class="form-group">
+    <label for="overview">Overview</label>
+    <input type="text" name="overview" id="overview" class="form-control" />
+  </div>
+  <div class="form-group">
     <label for="description">Description</label>
     <textarea name="description" id="description" class="form-control" rows="5"></textarea>
   </div>
   <div class="form-group">
     <label for="category">Category</label>
     <input type="category" name="category" value="Community Development" id="category" class="form-control"  />
+  </div>
+  <div class="form-group">
+    <label for="day_limit">For how many days do You want the Challenge to run?</label>
+    <input type="number" name="day_limit" class="form-control" id="day_limit" />
   </div>
   <button type="submit">Add Challenge</button>
 </form>

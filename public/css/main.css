@@ -4,6 +4,12 @@ h1, h2, h3, h4, h5, h6, p {
 	font-family: 'Raleway';
 }
 
+@media screen and (max-width: 1200px) {
+	.row.challenge-row, .row.challenge-body-row {
+		padding: 0 10px;
+	}
+}
+
 .margin-auto {
 	margin: auto;
 }

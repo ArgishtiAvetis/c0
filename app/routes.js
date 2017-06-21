@@ -181,6 +181,10 @@ module.exports = function(app, passport) {
               email = req.user.facebook.email;
             }
 
+            if (req.user.new_name) {
+              name = req.user.new_name;
+            }
+
             res.render('profile', {
                 user : req.user, // get the user out of session and pass to template
                 id: req.user.id,
@@ -201,6 +205,7 @@ module.exports = function(app, passport) {
       let name = req.body.name;
       let email = req.body.email;
       let country = req.body.country;
+      let old_country = req.body.old_country;
 
       User.update({
         _id: id
@@ -208,7 +213,7 @@ module.exports = function(app, passport) {
         $set: {
           new_name: name,
           new_email: email,
-          country: country
+          country: (country) ? country : old_country
         }
       }, () => res.redirect('/profile/account'));
     });
@@ -231,9 +236,11 @@ module.exports = function(app, passport) {
         var newChallenge = new Challenge({
           title: req.body.title.trim(),
           description: req.body.description.trim(),
+          overview: req.body.overview.trim(),
           slug: req.body.title.trim().replace(/\s+/g, "-"),
           author_id: req.body.author_id.trim(),
-          category: req.body.category.trim()
+          category: req.body.category.trim(),
+          day_limit: req.body.day_limit.trim()
         });
         newChallenge.save(function (err, newChallenge) {
           if (err) return console.error(err);
