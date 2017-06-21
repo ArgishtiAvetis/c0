@@ -49,37 +49,106 @@ module.exports = function(app, passport) {
     // SINGLE CHALLENGE PAGE ===============
     // =====================================
 
+
     app.get('/c/:slug', function(req, res) {
+
       isAuth = (req.isAuthenticated()) ? true : false;
-
-
 
       Challenge.findOne({
         slug: req.params.slug
-      })
-        .exec((err, challenge) => {
-          if (err) {
-            res.send("Error has occured");
-          } else {
+      }).exec((err, challenge) => {
+        if (err) {
+          res.send("error");
+        } else {
 
-
-            Challenge.findById(challenge._id, function (err, challenge) {
+          Challenge.findById(challenge._id, function (err, challenge) {
               if (err) return handleError(err);
 
               challenge.views = challenge.views + 1;
               challenge.save(function (err, updated) {
                 if (err) return handleError(err);
-                //res.send(updated);
+
               });
             });
+
+          User.findById(challenge.author_id, (err, user) => {
+            console.log(user);
+
+            let name = '';
+            let email = '';
+
+            if (user.local.name) {
+              name = user.local.name;
+              email = user.local.email;
+            } else if (user.google.name) {
+              name = user.google.name;
+              email = user.google.email;
+            } else if (user.twitter.displayName) {
+              name = user.twitter.displayName;
+              email = user.twitter.email;
+            } else if (user.new_name) {
+              name = user.new_name;
+              email = user.local.email;
+            } else {
+              name = user.facebook.name;
+              email = user.facebook.email;
+            }
+
 
 
             res.render('single-challenge', {
               challenge: challenge,
+              user: user,
+              name: name,
               isAuth: isAuth
             });
-          }
-        });
+
+          });
+
+
+
+
+        }
+      });
+
+      // Challenge.findOne({
+      //   slug: req.params.slug
+      // })
+      //   .exec((err, challenge) => {
+      //     if (err) {
+      //       res.send("Error has occured");
+      //     } else {
+      //
+      //
+      //       Challenge.findById(challenge._id, function (err, challenge) {
+      //         if (err) return handleError(err);
+      //
+      //         challenge.views = challenge.views + 1;
+      //         challenge.save(function (err, updated) {
+      //           if (err) return handleError(err);
+      //
+      //         });
+      //       });
+      //
+      //       User.findOne({
+      //         _id: challenge.author_id
+      //       }).exec((err, user) => {
+      //         if (err) {
+      //           res.send('error has cocured!');
+      //         } else {
+      //           var author = user;
+      //         }
+      //       });
+      //
+      //       res.render('single-challenge', {
+      //         challenge: challenge,
+      //         user: author,
+      //         isAuth: isAuth
+      //       });
+      //
+      //
+      //     }
+      //   });
     });
 
     // =====================================

@@ -1,25 +1,82 @@
-Your id is <b><%= user._id %></b> <br />
-<form method="post" action="/add-challenge">
-  <input type="text" name="author_id" value="<%= user._id %>" style="display:none" />
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" name="title" id="title" class="form-control" />
+<div class="row">
+  <div class="col-sm-12">
+    <h1>Add a Challenge</h1>
+    <hr />
   </div>
-  <div class="form-group">
-    <label for="overview">Overview</label>
-    <input type="text" name="overview" id="overview" class="form-control" />
+  <form method="post" action="/add-challenge">
+    <input type="text" name="author_id" value="<%= user._id %>" style="display:none" />
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" class="form-control" required />
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select name="category" class="selectpicker form-control" data-live-search="true" required>
+          <option value="">Pick a category</option>
+          <optgroup label="Arts &amp; Crafts">
+            <option value="Art">Art</option>
+            <option value="Architecture">Architecture</option>
+            <option value="Music">Music</option>
+            <option value="Photography">Photography</option>
+            <option value="Writing-Publishing">Writing &amp; Publishing</option>
+            <option value="TV Shows">TV Shows</option>
+            <option value="Filmmaking">Filmmaking</option>
+          </optgroup>
+          <optgroup label="Technology">
+            <option value="Apps">Apps</option>
+            <option value="Web">Web</option>
+            <option value="AI">AI</option>
+            <option value="VR-AI">VR &amp; AI</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Video Games">Video Games</option>
+          </optgroup>
+          <optgroup label="Society">
+            <option value="Education">Education</option>
+            <option value="Business">Business</option>
+            <option value="Environment">Environment</option>
+            <option value="Social Innovation">Social Innovation</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="overview">Overview</label>
+        <textarea name="overview" id="overview" class="form-control" rows="5" required></textarea>
+      </div>
+    </div>
+
+
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea name="description" id="description" class="form-control" rows="5" required></textarea>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="description">Description</label>
-    <textarea name="description" id="description" class="form-control" rows="5"></textarea>
+
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="img0">Upload an Image</label>
+      <input type="file" name="img0" class="form-control" id="img0" required />
+    </div>
+    <style media="screen">
+
+    </style>
   </div>
-  <div class="form-group">
-    <label for="category">Category</label>
-    <input type="category" name="category" value="Community Development" id="category" class="form-control"  />
+
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="day_limit">For how many days do You want the Challenge to run?</label>
+      <input type="number" name="day_limit" class="form-control" id="day_limit" required />
+    </div>
   </div>
-  <div class="form-group">
-    <label for="day_limit">For how many days do You want the Challenge to run?</label>
-    <input type="number" name="day_limit" class="form-control" id="day_limit" />
+
+  <div class="col-sm-12">
+    <button type="submit" class="btn btn-primary">Add Challenge</button>
   </div>
-  <button type="submit">Add Challenge</button>
-</form>
+
+  </form>
+
+</div>

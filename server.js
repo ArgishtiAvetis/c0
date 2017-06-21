@@ -14,6 +14,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
+var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
+
 var configDB = require('./config/database.js');
 var Challenge = require('./app/models/challenge');
 
