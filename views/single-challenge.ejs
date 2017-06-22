@@ -52,14 +52,22 @@
 
 		<div class="col-md-8">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="">The Challenge</a></li>
-				<li><a href="">Files &amp; Resources</a></li>
-				<li><a href="">Submitted Solutions</a></li>
+				<li class="active" id="c-go-body"><a class="c-go-tabs">The Challenge</a></li>
+				<li id="c-go-files"><a class="c-go-tabs">Files &amp; Resources</a></li>
+				<li id="c-go-solutions"><a class="c-go-tabs">Submitted Solutions</a></li>
 			</ul>
 
-			<p id="p-challenge-body">
-        <%= challenge.description %>
-      </p>
+			<div  id="body">
+        <p id="p-challenge-body">
+					<%= challenge.description %>
+				</p>
+      </div>
+			<div id="files" class="hide">
+				<h1>Files lol</h1>
+			</div>
+			<div id="solutions" class="hide">
+				<h1>Solutions lol</h1>
+			</div>
 
 			<div class="text-center">
 				<h3 id="p-challenge-submit-hook">Have an Idea? Submit your Solution.</h3>

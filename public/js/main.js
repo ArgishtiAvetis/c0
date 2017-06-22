@@ -31,6 +31,34 @@ $(document).ready(function() {
       };
   };
 
+  $('#c-go-body').click(function() {
+    $(this).addClass('active');
+    $('#c-go-solutions').removeClass('active');
+    $('#c-go-files').removeClass('active');
+    $('#files').addClass('hide');
+    $('#solutions').addClass('hide');
+    $('#body').removeClass('hide');
+  });
+
+  $('#c-go-files').click(function() {
+    $(this).addClass('active');
+    $('#c-go-solutions').removeClass('active');
+    $('#c-go-body').removeClass('active');
+    $('#body').addClass('hide');
+    $('#solutions').addClass('hide');
+    $('#files').removeClass('hide');
+  });
+
+  $('#c-go-solutions').click(function() {
+    $(this).addClass('active');
+    $('#c-go-files').removeClass('active');
+    $('#c-go-body').removeClass('active');
+    $('#files').addClass('hide');
+    $('#body').addClass('hide');
+    $('#solutions').removeClass('hide');
+  });
+
+
 });
       // fetch("/api/challenges/" + $('#div1').data('user')) // Call the fetch function passing the url of the API as a parameter
       //   .then((resp) => resp.json())
