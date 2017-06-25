@@ -3,7 +3,7 @@
     <h1>Add a Challenge</h1>
     <hr />
   </div>
-  <form method="post" action="/add-challenge">
+  <form method="post" action="/add-challenge" enctype="multipart/form-data">
     <input type="text" name="author_id" value="<%= user._id %>" style="display:none" />
     <div class="col-sm-6">
       <div class="form-group">

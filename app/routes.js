@@ -1,11 +1,13 @@
 // app/routes.js
 module.exports = function(app, passport) {
     var expressValidator = require('express-validator');
-
+    var fetch = require('node-fetch');
     var Challenge = require('./models/challenge');
     var User = require('./models/user');
     let isAuth;
     let errors = [];
+
+  
 
     // =====================================
     // HOME PAGE ===========================
@@ -17,14 +19,66 @@ module.exports = function(app, passport) {
           if (err) {
             res.send("Error has occured");
           } else {
+
+            let usernames = [];
+
+            // for (let i = 0, len = challenges.length; i < len; i++) {
+            //   var root = 'http://localhost:8080/api/user/' + challenges[i].author_id;
+
+            //   fetch(root, { method: 'GET' })
+            //     .then(response => response.json())
+            //       .then(user => {
+            //         usernames.push((user.new_name) ? user.new_name : user.google.name);
+            //         console.log(usernames);
+                    
+            //       });
+            // }
+
             res.render('index', {
+              usernames: usernames,
               challenges: challenges,
               isAuth: isAuth
             }); // load the index.ejs file
-          }
+            
+
+           
+            // function getUsernames() {
+            //   for(let i = 0, len  = challenges.length; i < len; i++) {
+            //     User.findById(challenges[i].author_id, function (err, user) {
+            //       if (err) return handleError(err);
+            //       console.log((user.new_name) ? user.new_name : user.google.name);
+            //       console.log('-----');
+
+            //       usernames.push((user.new_name) ? user.new_name : user.google.name);
+
+            //     });
+            //   }
+            // }
+
+            // function renderView() {
+            //   console.log('---->>>>> ' + usernames);
+            //   res.render('index', {
+            //     usernames: usernames,
+            //     challenges: challenges,
+            //     isAuth: isAuth
+            //   }); // load the index.ejs file
+            // }
+
+            // let p = new Promise((resolve, reject) => {
+            //   getUsernames();
+            // }).then(response => {
+            //   renderView();
+            // })
+            //   .catch(reject => res.send("Error")); 
+              
+            
+        
+          } // are challenges retrieved?
         });
 
     });
+
+
 
     // =====================================
     // CHALLENGES PAGE =====================
@@ -150,6 +204,10 @@ module.exports = function(app, passport) {
       //     }
       //   });
     });
+
+
+    // POST add a challenge is in SERVER.js
+
 
     // =====================================
     // LOGIN ===============================
@@ -287,36 +345,7 @@ module.exports = function(app, passport) {
       }, () => res.redirect('/profile/account'));
     });
 
-    // add a challenge
-    app.post('/add-challenge', (req, res) => {
-
-      req.checkBody('title', 'Title is required').notEmpty();
-      req.checkBody('description', 'Description is required').notEmpty();
-      req.checkBody('category', 'Category is required').notEmpty();
-      var errors = req.validationErrors();
-      if(errors){
-        console.log(errors);
-    		// res.render('profile', isLoggedIn, {
-        //   isAuth: true,
-    		// 	errors: errors,
-        //   user : req.user
-    		// });
-    	} else {
-        var newChallenge = new Challenge({
-          title: req.body.title.trim(),
-          description: req.body.description.trim(),
-          overview: req.body.overview.trim(),
-          slug: req.body.title.trim().replace(/\s+/g, "-"),
-          author_id: req.body.author_id.trim(),
-          category: req.body.category.trim(),
-          day_limit: req.body.day_limit.trim()
-        });
-        newChallenge.save(function (err, newChallenge) {
-          if (err) return console.error(err);
-        });
-        res.redirect('/profile');
-      }
-    });
+    
 
     app.post('/c/d/:challenge_id', (req, res) => {
       let id = req.params.challenge_id;
