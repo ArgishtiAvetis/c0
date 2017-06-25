@@ -52,7 +52,7 @@ div.menu-search {
 
 }
 
-.nav li a {
+.nav li a, nav a.dropdown-toggle  {
 	margin-top: 10px;
 	font-size: 20px;
 }
@@ -650,10 +650,34 @@ button.green:hover {
 }
 
 
+/* MEDIA QUERIES (well, most of them :P )  */
 
+@media screen and (max-width: 1100px) {
+	.nav li a.btn-start-challenge {
+	    display: none;
+	}
+}
 
+@media screen and (min-width: 951px) {
+#tablet-nav-account {
+  display: none;
+}
+}
 
+@media screen and (max-width: 950px) {
 
+nav li a.tablet-hide {
+  display: none;
+}
+
+#tablet-nav-account,  #tablet-nav-account a:hover, #tablet-nav-account.open a {
+  display: block;
+  margin-top: 5px;
+  padding-top: 5px;
+  text-decoration: none;
+}
+
+}
 
 
 
@@ -661,3 +685,11 @@ button.green:hover {
 
 
 /**/
+
+
+
+
+
+
+
+

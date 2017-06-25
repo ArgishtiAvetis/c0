@@ -123,19 +123,40 @@
       			       	</li>
                     <% if (isAuth) { %>
                       <li>
-                        <a href="/profile">Account</a>
+                        <a href="/profile" class="tablet-hide">Account</a>
                       </li>
                       <li>
-                        <a href="/logout">Log out</a>
+                        <a href="/logout" class="tablet-hide">Log out</a>
                       </li>
                     <% } else { %>
                       <li>
-                        <a href="/login">Log in</a>
+                        <a href="/login" class="tablet-hide">Log in</a>
                       </li>
                       <li>
-                        <a href="/signup">Sign up</a>
+                        <a href="/signup" class="tablet-hide">Sign up</a>
                       </li>
                     <% } %>
+                    
+                      <div id="tablet-nav-account">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span> </a>
+                        <div class="dropdown-menu">
+                          <% if (isAuth) { %>
+                            <li>
+                              <a href="/profile">Account</a>
+                            </li>
+                            <li>
+                              <a href="/logout">Log out</a>
+                            </li>
+                          <% } else { %>
+                            <li>
+                              <a href="/login">Log in</a>
+                            </li>
+                            <li>
+                              <a href="/signup">Sign up</a>
+                            </li>
+                          <% } %>
+                        </div>
+                      </div>
                   </ul>
       		    </div>
       		  </div>
