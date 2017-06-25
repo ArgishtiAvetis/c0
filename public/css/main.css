@@ -670,7 +670,7 @@ nav li a.tablet-hide {
   display: none;
 }
 
-#tablet-nav-account,  #tablet-nav-account a:hover, #tablet-nav-account.open a {
+#tablet-nav-account,  #tablet-nav-account a:hover {
   display: block;
   margin-top: 5px;
   padding-top: 5px;
