@@ -659,23 +659,35 @@ button.green:hover {
 }
 
 @media screen and (min-width: 951px) {
-#tablet-nav-account {
-  display: none;
+	#tablet-nav-account {
+	  display: none;
+	}
 }
+
+@media screen and (max-width: 765px) {
+	#tablet-nav-account {
+	  display: block;
+	}
+	nav li a.tablet-hide {
+	  display: block;
+	}
+	.nav li a.btn-start-challenge {
+	    display: block;
+	}
 }
 
 @media screen and (max-width: 950px) {
 
-nav li a.tablet-hide {
-  display: none;
-}
+	nav li a.tablet-hide {
+	  display: none;
+	}
 
-#tablet-nav-account,  #tablet-nav-account a:hover {
-  display: block;
-  margin-top: 5px;
-  padding-top: 5px;
-  text-decoration: none;
-}
+	#tablet-nav-account,  #tablet-nav-account a:hover {
+	  display: block;
+	  margin-top: 5px;
+	  padding-top: 5px;
+	  text-decoration: none;
+	}
 
 }
 
