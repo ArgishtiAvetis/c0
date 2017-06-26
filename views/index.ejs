@@ -11,21 +11,23 @@
   </div>
 
 
-<!-- Categories -->
-<% for(let i = 0; i < 3; i++) { %>
+<!-- Lights -->
+
+
 <div class="row homepage-categories-row">
 	<div class="container">
 		<section class="col-md-12">
-			<h2 class="homepage-category-title"><a href="">Category</a></h2>
+			<h2 class="homepage-category-title"><a href="">Light</a></h2>
+			<span>Campaigns for creative and original ideas.</span>
 			<hr>
 		</section>
-		<% for(let i = 0; i < challenges.length; i++) { %>
+		<% for(let i = 0; i < lights.length; i++) { %>
 			<section class="col-sm-6 col-lg-3">
 				<div class="item item-category">
-					<img src="/uploads/c/<%= challenges[i].img0 %>" alt="<%= challenges[i].title %>" class="img-responsive">
+					<img src="/uploads/c/<%= lights[i].img0 %>" alt="<%= lights[i].title %>" class="img-responsive">
 					<div class="item-descr">
-						<h1 class="thumbnail-title"><a href="/c/<%= challenges[i].slug %>"><%= challenges[i].title %></a> &nbsp;<span class="badge">15 Ideas</span></h1>
-						<!-- <h3 class="thumbnail-by">by <a href="<%= challenges[i].author_id %>"><%= usernames[0] %></a></h3> -->
+						<h1 class="thumbnail-title"><a href="/c/<%= lights[i].slug %>"><%= lights[i].title %></a> &nbsp;<span class="badge">15 Ideas</span></h1>
+						<!-- <h3 class="thumbnail-by">by <a href="<%= lights[i].author_id %>"><%= usernames[0] %></a></h3> -->
 						<span class="item-reward">
 						Reward:
 							<span class="glyphicon glyphicon-usd"></span>25
@@ -40,7 +42,7 @@
 						</div>
 						<span>33 days left</span>
             <br />
-            <p class="thumb-in-cat">In <a href="<%= challenges[i].category %>"><%= challenges[i].category %></a></p>
+            <p class="thumb-in-cat">In <a href="<%= lights[i].category %>"><%= lights[i].category %></a></p>
 					</div>
 
 				</div>
@@ -51,7 +53,91 @@
 			</section>
 	</div>
 </div>
-<% } %>
+
+<!-- Teasers -->
+
+<div class="row homepage-categories-row">
+	<div class="container">
+		<section class="col-md-12">
+			<h2 class="homepage-category-title"><a href="">Teaser</a></h2>
+			<span>Campaigns for constructive and practical solutions.</span>
+			<hr>
+		</section>
+		<% for(let i = 0; i < teasers.length; i++) { %>
+			<section class="col-sm-6 col-lg-3">
+				<div class="item item-category">
+					<img src="/uploads/c/<%= teasers[i].img0 %>" alt="<%= teasers[i].title %>" class="img-responsive">
+					<div class="item-descr">
+						<h1 class="thumbnail-title"><a href="/c/<%= teasers[i].slug %>"><%= teasers[i].title %></a> &nbsp;<span class="badge">15 Ideas</span></h1>
+						<!-- <h3 class="thumbnail-by">by <a href="<%= teasers[i].author_id %>"><%= usernames[0] %></a></h3> -->
+						<span class="item-reward">
+						Reward:
+							<span class="glyphicon glyphicon-usd"></span>25
+						</span>
+
+						<div class="progress">
+							<div class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="70"
+							  aria-valuemin="0" aria-valuemax="100" style="width:70%">
+								<span class="sr-only">70% Complete</span>
+							</div>
+
+						</div>
+						<span>33 days left</span>
+            <br />
+            <p class="thumb-in-cat">In <a href="<%= teasers[i].category %>"><%= teasers[i].category %></a></p>
+					</div>
+
+				</div>
+			</section>
+			<% } %>
+			<section class="col-md-12 text-center col-view-all-category">
+				<a href="/" class="btn btn-view-all-category">View All in This Category</a>
+			</section>
+	</div>
+</div>
+
+
+<!-- Brainstorms -->
+
+<div class="row homepage-categories-row">
+	<div class="container">
+		<section class="col-md-12">
+			<h2 class="homepage-category-title"><a href="">Brainstorm</a></h2>
+			<span>Campaigns for diverse and versatile suggestions.</span>
+			<hr>
+		</section>
+		<% for(let i = 0; i < brainstorms.length; i++) { %>
+			<section class="col-sm-6 col-lg-3">
+				<div class="item item-category">
+					<img src="/uploads/c/<%= brainstorms[i].img0 %>" alt="<%= brainstorms[i].title %>" class="img-responsive">
+					<div class="item-descr">
+						<h1 class="thumbnail-title"><a href="/c/<%= brainstorms[i].slug %>"><%= brainstorms[i].title %></a> &nbsp;<span class="badge">15 Ideas</span></h1>
+						<!-- <h3 class="thumbnail-by">by <a href="<%= brainstorms[i].author_id %>"><%= usernames[0] %></a></h3> -->
+						<span class="item-reward">
+						Reward:
+							<span class="glyphicon glyphicon-usd"></span>25
+						</span>
+
+						<div class="progress">
+							<div class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="70"
+							  aria-valuemin="0" aria-valuemax="100" style="width:70%">
+								<span class="sr-only">70% Complete</span>
+							</div>
+
+						</div>
+						<span>33 days left</span>
+            <br />
+            <p class="thumb-in-cat">In <a href="<%= brainstorms[i].category %>"><%= brainstorms[i].category %></a></p>
+					</div>
+
+				</div>
+			</section>
+			<% } %>
+			<section class="col-md-12 text-center col-view-all-category">
+				<a href="/" class="btn btn-view-all-category">View All in This Category</a>
+			</section>
+	</div>
+</div>
 
 <!-- // Categories -->
 

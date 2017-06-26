@@ -666,7 +666,7 @@ button.green:hover {
 
 @media screen and (max-width: 765px) {
 	#tablet-nav-account {
-	  display: block;
+	  display: none;
 	}
 	nav li a.tablet-hide {
 	  display: block;

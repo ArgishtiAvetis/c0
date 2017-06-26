@@ -7,6 +7,7 @@ var challengeSchema = mongoose.Schema({
   title: String,
   overview: String,
   description: String,
+  type: String,
   slug: String,
   author_id: String,
   category: String,

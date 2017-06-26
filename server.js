@@ -84,6 +84,7 @@ app.post('/add-challenge', (req, res) => {
   req.checkBody('title', 'Title is required').notEmpty();
   req.checkBody('description', 'Description is required').notEmpty();
   req.checkBody('category', 'Category is required').notEmpty();
+  req.checkBody('type', 'Type is required').notEmpty();
   var errors = req.validationErrors();
   if(errors){
     console.log(errors);
@@ -100,6 +101,7 @@ app.post('/add-challenge', (req, res) => {
       title: req.body.title.trim(),
       description: req.body.description.trim(),
       overview: req.body.overview.trim(),
+      type: req.body.type.trim(),
       slug: req.body.title.trim().replace(/\s+/g, "-"),
       author_id: req.body.author_id.trim(),
       category: req.body.category.trim(),

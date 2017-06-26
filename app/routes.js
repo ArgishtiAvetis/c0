@@ -9,51 +9,85 @@ module.exports = function(app, passport) {
 
   
 
+
     // =====================================
     // HOME PAGE ===========================
     // =====================================
     app.get('/', function(req, res) {
       isAuth = (req.isAuthenticated()) ? true : false;
-      Challenge.find({})
-        .exec((err, challenges) => {
+      Challenge.find({
+        type: 'light'
+      })
+        .exec((err, light) => {
           if (err) {
             res.send("Error has occured");
           } else {
 
-            let usernames = [];
+            Challenge.find({
+              type: 'teaser'
+            })
+              .exec((err, teaser) => {
+                if (err) {
+                  res.send("Error has occured");
+                } else {
 
-            // for (let i = 0, len = challenges.length; i < len; i++) {
-            //   var root = 'http://localhost:8080/api/user/' + challenges[i].author_id;
+                  Challenge.find({
+                    type: 'brainstorm'
+                  })
+                    .exec((err, brainstorm) => {
+                      if (err) {
+                        res.send(err);
+                      } else {
+                        let usernames = [];
+                        var getUsernames = () => {
+                          return new Promise((resolve, reject) => {
 
-            //   fetch(root, { method: 'GET' })
-            //     .then(response => response.json())
-            //       .then(user => {
-            //         usernames.push((user.new_name) ? user.new_name : user.google.name);
-            //         console.log(usernames);
-                    
-            //       });
-            // }
+                          function getUsernames() {
+                            for(let i = 0, len  = challenges.length; i < len; i++) {
+                              User.findById(challenges[i].author_id, function (err, user) {
+                                if (err) return handleError(err);
+                                console.log((user.new_name) ? user.new_name : user.google.name);
+                                console.log('-----');
 
-            res.render('index', {
-              usernames: usernames,
-              challenges: challenges,
-              isAuth: isAuth
-            }); // load the index.ejs file
+                                usernames.push((user.new_name) ? user.new_name : user.google.name);
+
+                              });
+                            };
+                          };
+
+                          return usernames.length ? resolve(usernames) : reject('Not Loaded');
+
+                          });
+                        }
+
+                        getUsernames()
+                          .then((data) => {
+                            console.log(data);
+                          })
+                          .catch((err) => {
+                            console.log(err);
+                          });
+
+
+                        res.render('index', {
+                          usernames: usernames,
+                          lights: light,
+                          teasers: teaser,
+                          brainstorms: brainstorm,
+                          isAuth: isAuth
+                        }); // load the index.ejs file
+                      }
+                    })
+
+
+                }
+              });
+
+            
             
 
            
-            // function getUsernames() {
-            //   for(let i = 0, len  = challenges.length; i < len; i++) {
-            //     User.findById(challenges[i].author_id, function (err, user) {
-            //       if (err) return handleError(err);
-            //       console.log((user.new_name) ? user.new_name : user.google.name);
-            //       console.log('-----');
-
-            //       usernames.push((user.new_name) ? user.new_name : user.google.name);
-
-            //     });
-            //   }
-            // }
+            
 
             // function renderView() {
             //   console.log('---->>>>> ' + usernames);
@@ -78,6 +112,59 @@ module.exports = function(app, passport) {
 
     });
 
+
+
+
+
+
+
+
+    // =====================================
+    // HOME PAGE ===========================
+    // =====================================
+
+    // function getUsernames(req, res, next) {
+    //   isAuth = (req.isAuthenticated()) ? true : false;
+    //   Challenge.find({})
+    //     .exec((err, challenges) => {
+    //       if (err) {
+    //         res.send("Error has occured");
+    //       } else {
+
+    //         let usernames = [];
+
+    //         for(let i = 0, len  = challenges.length; i < len; i++) {
+    //           User.findById(challenges[i].author_id, function (err, user) {
+    //             if (err) return handleError(err);
+    //             console.log((user.new_name) ? user.new_name : user.google.name);
+    //             console.log('-----');
+
+    //             usernames.push((user.new_name) ? user.new_name : user.google.name);
+
+    //           });
+    //         };
+
+    //           if(usernames.length > 0) {
+                  
+    //               return next();
+    //           }
+
+    //         }
+
+            
+            
+    //     });
+    // }
+
+    // function renderHomepage(req, res) {
+    //   res.render('index', {
+    //     usernames: usernames,
+    //     challenges: challenges,
+    //     isAuth: isAuth
+    //   }); // load the index.ejs file
+    // }
+
+    // app.get('/', getUsernames, renderHomepage);
 
 
     // =====================================
@@ -281,7 +368,7 @@ module.exports = function(app, passport) {
       });
     });
 
-    app.get('/profile/:page', (req, res) => {
+    app.get('/profile/:page', isLoggedIn, (req, res) => {
       let page = req.params.page;
         Challenge.find({
           author_id: req.user._id
@@ -431,5 +518,5 @@ function isLoggedIn(req, res, next) {
         return next();
 
     // if they aren't redirect them to the home page
-    res.redirect('/');
+    res.redirect('/login');
 }
