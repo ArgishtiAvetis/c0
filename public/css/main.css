@@ -137,11 +137,13 @@ li.top-right-buttons a {
 
 .drop-category {
 	font-size: 20px;
+	margin: 10px 0 5px 0;
 }
 
 .drop-category-ul {
 	list-style-type: none;
 	text-align: left;
+	padding: 10px;
 }
 
 .drop-category-ul li {
@@ -155,7 +157,7 @@ li.top-right-buttons a {
     line-height: 20px;
     cursor: pointer;
     color:  #000099;
-    padding-top: 20px;
+    padding-top: ;
 }
 
 .drop-category-ul a:hover {
@@ -176,7 +178,7 @@ li.top-right-buttons a {
 }
 
 .navbar-search input:focus {
-	width: 350px;
+	width: 225px;
 }
 
 
