@@ -26,8 +26,10 @@
 				<div class="item item-category">
 					<img src="/uploads/c/<%= lights[i].img0 %>" alt="<%= lights[i].title %>" class="img-responsive">
 					<div class="item-descr">
-						<h1 class="thumbnail-title"><a href="/c/<%= lights[i].slug %>"><%= lights[i].title %></a> &nbsp;<span class="badge">15 Ideas</span></h1>
-						<!-- <h3 class="thumbnail-by">by <a href="<%= lights[i].author_id %>"><%= usernames[0] %></a></h3> -->
+						<h1 class="thumbnail-title"><a href="/c/<%= lights[i].slug %>"><%= lights[i].title %></a>  <br /><span class="badge">15 Ideas</span></h1>
+						<p><%= lights[i].overview %></p>
+						<!-- <h3 class="thumbnail-by">by <a href="<%= lights[i].author_id %>"><%= %> -->
+						</a></h3>
 						<span class="item-reward">
 						Reward:
 							<span class="glyphicon glyphicon-usd"></span>25
@@ -42,7 +44,7 @@
 						</div>
 						<span>33 days left</span>
             <br />
-            <p class="thumb-in-cat">In <a href="<%= lights[i].category %>"><%= lights[i].category %></a></p>
+            <p class="thumb-in-cat text-center">In <a href="<%= lights[i].category %>"><%= lights[i].category %></a></p>
 					</div>
 
 				</div>

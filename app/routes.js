@@ -5,23 +5,53 @@ module.exports = function(app, passport) {
     var Challenge = require('./models/challenge');
     var User = require('./models/user');
     let isAuth;
+    var mongoose = require('mongoose');
     let errors = [];
 
   
 
 
-    // =====================================
-    // HOME PAGE ===========================
-    // =====================================
-    app.get('/', function(req, res) {
-      isAuth = (req.isAuthenticated()) ? true : false;
-      Challenge.find({
+// =====================================
+// HOME PAGE ===========================
+// =====================================
+
+
+app.get('/', function(req, res) {
+  
+  isAuth = (req.isAuthenticated()) ? true : false;
+
+  var usersArr = [];
+
+  // User.find({}).exec((err, users) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     usersArr.push(users);
+  //   }
+  // });
+
+  Challenge.find({
         type: 'light'
       })
         .exec((err, light) => {
           if (err) {
             res.send("Error has occured");
           } else {
+
+            let lightsUserIds = [];
+
+            for(let n = 0, len = light.length; n < len; n++) {
+              lightsUserIds.push(light[n].author_id);
+            }
+
+            User.find({
+              '_id': { $in: lightsUserIds }
+            }).exec((err, lightsUsers) => {
+              if (err) {
+                console.log(err);
+              } else {
+
+
 
             Challenge.find({
               type: 'teaser'
@@ -31,6 +61,19 @@ module.exports = function(app, passport) {
                   res.send("Error has occured");
                 } else {
 
+                  let teasersUserIds = [];
+
+                  for(let n = 0, len = teaser.length; n < len; n++) {
+                    teasersUserIds.push(teaser[n].author_id);
+                  }
+
+                  User.find({
+                    '_id': { $in: teasersUserIds }
+                  }).exec((err, teasersUsers) => {
+                    if (err) {
+                      console.log(err);
+                    } else {
+
                   Challenge.find({
                     type: 'brainstorm'
                   })
@@ -38,50 +81,36 @@ module.exports = function(app, passport) {
                       if (err) {
                         res.send(err);
                       } else {
-                        let usernames = [];
-                        var getUsernames = () => {
-                          return new Promise((resolve, reject) => {
 
-                          function getUsernames() {
-                            for(let i = 0, len  = challenges.length; i < len; i++) {
-                              User.findById(challenges[i].author_id, function (err, user) {
-                                if (err) return handleError(err);
-                                console.log((user.new_name) ? user.new_name : user.google.name);
-                                console.log('-----');
-
-                                usernames.push((user.new_name) ? user.new_name : user.google.name);
-
-                              });
-                            };
-                          };
-
-                          return usernames.length ? resolve(usernames) : reject('Not Loaded');
-
-                          });
-                        }
-
-                        getUsernames()
-                          .then((data) => {
-                            console.log(data);
-                          })
-                          .catch((err) => {
-                            console.log(err);
-                          });
+                      var usernames = [];
+                      console.log(lightsUsers);
+                      console.log('-> next <-');
+                      console.log(teasersUsers);
+                      res.render('index', {
+                        lights_users: lightsUsers,
+                        teasers_users: teasersUsers,
+                        usernames: usernames,
+                        lights: light,
+                        teasers: teaser,
+                        brainstorms: brainstorm,
+                        isAuth: isAuth
+                      }); // load the index.ejs file
 
 
-                        res.render('index', {
-                          usernames: usernames,
-                          lights: light,
-                          teasers: teaser,
-                          brainstorms: brainstorm,
-                          isAuth: isAuth
-                        }); // load the index.ejs file
                       }
-                    })
-
-
+                    }); 
                 }
               });
+            }
+          });
+        }  
+      });
+     }  
+    });
+
+
+});
+
 
             
             
@@ -107,10 +136,10 @@ module.exports = function(app, passport) {
               
             
         
-          } // are challenges retrieved?
-        });
+    //       } // are challenges retrieved?
+    //     });
 
-    });
+    // });
 
 
 
