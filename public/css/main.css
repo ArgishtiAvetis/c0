@@ -691,6 +691,18 @@ button.green:hover {
 	  text-decoration: none;
 	}
 
+	#intro-slogan {
+		font-size: 40px;
+	}
+
+	#intro-hook {
+		font-size: 30px;
+	}
+
+	#intro-join {
+		font-size: 25px;
+	}
+
 }
 
 
