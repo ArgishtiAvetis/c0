@@ -1,6 +1,6 @@
 <div class="col-sm-12">
     <% for(let i = 0, len = challenges.length; i < len; i++ ) { %>
-  			<section class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+  			<section class="col-xs-12 col-sm-6 col-md-4 col-lg-3" id="c<%= challenges[i]._id %>">
   				<div class="item">
   					<img src="https://challer.co/img/upload/Tengu-pech-zariadnoe-ustroistvo-ecotechnica-com-ua-2.jpg" class="img img-responsive" alt="">
   					<div class="item-descr">
@@ -21,7 +21,12 @@
   						<p class="thumbnail-category">in <a href="/<%= challenges[i].category %>"><%= challenges[i].category %></a></p>
   					</div>
             <span style="font-size: 20px;padding: 15px;"><span class="fa fa-eye"></span> Viewed <b><%= challenges[i].views %></b> times</span>
-  				</div>
+            <br />
+  				  <div class="delete" data-id="<%= challenges[i]._id %>">
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </div>
+          </div>
+
   			</section>
   			<% } %>
   <div id="div1" data-user="<%= user._id %>"></div>

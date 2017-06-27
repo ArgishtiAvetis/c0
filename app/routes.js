@@ -437,7 +437,7 @@ module.exports = function(app, passport) {
     app.post('/c/d/:challenge_id', (req, res) => {
       let id = req.params.challenge_id;
       Challenge.remove({ _id: id }, function (err) {
-        if (err) return handleError(err);
+        if (err) return console.log(err);
         res.redirect('/profile');
       });
     });

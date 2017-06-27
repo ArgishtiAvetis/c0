@@ -23,9 +23,9 @@ $(document).ready(function() {
         type: 'POST',
         url: '/c/d/' + $(this).data('id')
       }).done(function(response) {
-        window.location.replace('/profile');
+        //window.location.replace('/profile');
       });
-        window.location.replace('/profile');
+        //window.location.replace('/profile');
       } else {
         return false;
       };
