@@ -58,20 +58,60 @@
 			</ul>
 
 			<div  id="body">
-        <p id="p-challenge-body">
+        		<p id="p-challenge-body">
 					<%= challenge.description %>
+
 				</p>
-      </div>
+      		</div>
 			<div id="files" class="hide">
 				<h1>Files lol</h1>
 			</div>
 			<div id="solutions" class="hide">
 				<h1>Solutions lol</h1>
+				<% if(challenge.is_public) { %>
+				
+					<% for (let i = 0, len = ideas.length; i < len; i++) { %>
+						<h3><%= ideas[i].body %></h3>
+					<%	} %>
+
+				<% } else { %>
+				Private
+				<% } %>
 			</div>
 
 			<div class="text-center">
-				<h3 id="p-challenge-submit-hook">Have an Idea? Submit your Solution.</h3>
-				<button class="btn btn-submit-idea green">Submit Idea</button>
+				<!-- <h3 id="p-challenge-submit-hook">Have an Idea? Submit your Solution.</h3>
+				<button class="btn btn-submit-idea green">Submit Idea</button> -->
+			</div>
+			<div>
+				<hr />
+				<% if (isAuth) { %>
+					<h3 id="p-challenge-submit-hook">Contribute to this Challenge</h3>
+					<form action="/contribute" method="post">
+					<div class="col-sm-12">
+
+					<input type="hidden" name="c_i" value="<%= challenge._id %>" />
+					<input type="hidden" name="u_i" value="<%= user._id %>" />
+						<div class="form-group">
+							<label for="body">Body</label>
+							<textarea class="form-control" name="body" rows="5" required></textarea>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="file">Image or Files</label>
+							<input type="file" name="file" />
+						</div>
+					</div>
+					<div class="col-sm-6 text-right">
+						<div class="form-group">
+							<button class="btn btn-primary" type="submit">Contribute</button>
+						</div>
+					</div>
+					</form>
+				<% } else { %>
+					<h3 id="p-challenge-submit-hook">Log in to Contribute</h3>
+				<% } %>
 			</div>
 
 		</div>

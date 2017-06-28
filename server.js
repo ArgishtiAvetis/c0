@@ -22,6 +22,7 @@ var configDB = require('./config/database.js');
 
 var Challenge = require('./app/models/challenge');
 var User = require('./app/models/user');
+var Idea = require('./app/models/idea');
 
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
@@ -126,7 +127,20 @@ app.post('/add-challenge', (req, res) => {
   } 
 });
 
+app.post('/contribute', (req, res) => {
 
+  var newIdea = new Idea({
+    body: req.body.body.trim(),
+    challenge_id: req.body.c_i.trim(),
+    author_id: req.body.u_i.trim(),
+  });
+
+  newIdea.save(function (err, newIdea) {
+    if (err) return console.error(err);
+  });
+  res.redirect('/profile/activity');
+
+});
 
 app.get('/googled6ab2d2a2c5cc94e.html', (req, res) => {
   res.render('google');

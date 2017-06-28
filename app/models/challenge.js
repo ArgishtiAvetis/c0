@@ -17,6 +17,10 @@ var challengeSchema = mongoose.Schema({
     type: Number,
     default: 0
   },
+  is_public: {
+    type: Boolean,
+    default: true,
+  },  
   is_active: {
     type: Boolean,
     default: true,

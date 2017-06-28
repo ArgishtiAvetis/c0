@@ -4,6 +4,7 @@ module.exports = function(app, passport) {
     var fetch = require('node-fetch');
     var Challenge = require('./models/challenge');
     var User = require('./models/user');
+    var Idea = require('./models/idea');
     let isAuth;
     var mongoose = require('mongoose');
     let errors = [];
@@ -232,16 +233,23 @@ app.get('/', function(req, res) {
         } else {
 
           Challenge.findById(challenge._id, function (err, challenge) {
+            if (err) return handleError(err);
+
+            challenge.views = challenge.views + 1;
+            challenge.save(function (err, updated) {
               if (err) return handleError(err);
 
-              challenge.views = challenge.views + 1;
-              challenge.save(function (err, updated) {
-                if (err) return handleError(err);
-
-              });
             });
+          });
 
-          User.findById(challenge.author_id, (err, user) => {
+
+          Idea.find({
+            challenge_id: challenge._id
+          }).sort({'id': -1}).exec((err, ideas) => {
+
+            if (err) console.log(err);
+
+            User.findById(challenge.author_id, (err, user) => {
             console.log(user);
 
             let name = '';
@@ -267,6 +275,7 @@ app.get('/', function(req, res) {
 
 
             res.render('single-challenge', {
+              ideas: ideas,
               challenge: challenge,
               user: user,
               name: name,
@@ -274,6 +283,10 @@ app.get('/', function(req, res) {
             });
 
           });
+
+          });
+
+          
 
 
 
