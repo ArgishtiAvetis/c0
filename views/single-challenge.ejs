@@ -67,11 +67,20 @@
 				<h1>Files lol</h1>
 			</div>
 			<div id="solutions" class="hide">
-				<h1>Solutions lol</h1>
+				<h1 class="black">Contributions</h1>
 				<% if(challenge.is_public) { %>
 				
 					<% for (let i = 0, len = ideas.length; i < len; i++) { %>
-						<h3><%= ideas[i].body %></h3>
+						<!-- Left-aligned -->
+						<div class="media">
+						  <div class="media-left">
+						    <img src="https://www.w3schools.com/bootstrap/img_avatar1.png" class="media-object" style="width:60px">
+						  </div>
+						  <div class="media-body">
+						    <h4 class="media-heading"><%= ideas[i].author_id %></h4>
+						    <p><%= ideas[i].body %></p>
+						  </div>
+						</div>
 					<%	} %>
 
 				<% } else { %>

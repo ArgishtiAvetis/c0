@@ -249,6 +249,10 @@ app.get('/', function(req, res) {
 
             if (err) console.log(err);
 
+            // User.find({
+            //   _id: ideas[n].author_id
+            // })
+
             User.findById(challenge.author_id, (err, user) => {
             console.log(user);
 
