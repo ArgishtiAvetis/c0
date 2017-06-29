@@ -249,6 +249,13 @@ app.get('/', function(req, res) {
 
             if (err) console.log(err);
 
+            var contributors = [];
+            for (let n = 0, len = ideas.length; n < len; n++) {
+              User.findById(ideas[n].author_id, (err, contributor) => {
+                contributors.push(contributor.local.email);
+              });
+            }
+
             // User.find({
             //   _id: ideas[n].author_id
             // })
@@ -276,12 +283,13 @@ app.get('/', function(req, res) {
               email = user.facebook.email;
             }
 
-
+            console.log(contributors);
 
             res.render('single-challenge', {
               ideas: ideas,
               challenge: challenge,
-              user: user,
+              contributors: contributors,
+              user: req.user,
               name: name,
               isAuth: isAuth
             });
