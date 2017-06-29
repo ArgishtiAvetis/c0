@@ -252,7 +252,7 @@ app.get('/', function(req, res) {
             var contributors = [];
             for (let n = 0, len = ideas.length; n < len; n++) {
               User.findById(ideas[n].author_id, (err, contributor) => {
-                contributors.push(contributor.local.email);
+                contributors.push(contributor);
               });
             }
 
@@ -266,8 +266,8 @@ app.get('/', function(req, res) {
             let name = '';
             let email = '';
 
-            if (user.local.name) {
-              name = user.local.name;
+            if (user.local.email) {
+              name = user.new_name;
               email = user.local.email;
             } else if (user.google.name) {
               name = user.google.name;
@@ -275,15 +275,16 @@ app.get('/', function(req, res) {
             } else if (user.twitter.displayName) {
               name = user.twitter.displayName;
               email = user.twitter.email;
-            } else if (user.new_name) {
-              name = user.new_name;
-              email = user.local.email;
+            // } else if (user.new_name) {
+            //   name = user.new_name;
+            //   email = user.local.email;
             } else {
               name = user.facebook.name;
               email = user.facebook.email;
             }
 
             console.log(contributors);
+
 
             res.render('single-challenge', {
               ideas: ideas,
