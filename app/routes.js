@@ -424,7 +424,7 @@ app.get('/', function(req, res) {
     });
 
     app.get('/profile/:page', isLoggedIn, (req, res) => {
-      let page = req.params.page;
+        let page = req.params.page;
         Challenge.find({
           author_id: req.user._id
         })
@@ -432,6 +432,15 @@ app.get('/', function(req, res) {
           if (err) {
             res.send("Error has occured");
           } else {
+
+
+              Idea.find({
+                author_id: req.user._id
+              }).exec((err, myIdeas) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  
 
             let name = '';
             let email = '';
@@ -462,8 +471,15 @@ app.get('/', function(req, res) {
                 isAuth: true,
                 errors: errors,
                 challenges: challenges,
+                ideas: myIdeas,
                 page: page
             });
+
+
+                }
+              });
+
+           
           }
         });
 
