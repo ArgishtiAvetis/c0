@@ -112,200 +112,153 @@ app.get('/', function(req, res) {
 
 });
 
-
-            
-            
-
-           
-            
-
-            // function renderView() {
-            //   console.log('---->>>>> ' + usernames);
-            //   res.render('index', {
-            //     usernames: usernames,
-            //     challenges: challenges,
-            //     isAuth: isAuth
-            //   }); // load the index.ejs file
-            // }
-
-            // let p = new Promise((resolve, reject) => {
-            //   getUsernames();
-            // }).then(response => {
-            //   renderView();
-            // })
-            //   .catch(reject => res.send("Error")); 
-              
-            
-        
-    //       } // are challenges retrieved?
-    //     });
-
-    // });
-
-
-
-
-
-
-
-
-    // =====================================
-    // HOME PAGE ===========================
-    // =====================================
-
-    // function getUsernames(req, res, next) {
-    //   isAuth = (req.isAuthenticated()) ? true : false;
-    //   Challenge.find({})
-    //     .exec((err, challenges) => {
-    //       if (err) {
-    //         res.send("Error has occured");
-    //       } else {
-
-    //         let usernames = [];
-
-    //         for(let i = 0, len  = challenges.length; i < len; i++) {
-    //           User.findById(challenges[i].author_id, function (err, user) {
-    //             if (err) return handleError(err);
-    //             console.log((user.new_name) ? user.new_name : user.google.name);
-    //             console.log('-----');
-
-    //             usernames.push((user.new_name) ? user.new_name : user.google.name);
-
-    //           });
-    //         };
-
-    //           if(usernames.length > 0) {
-                  
-    //               return next();
-    //           }
-
-    //         }
-
-            
-            
-    //     });
-    // }
-
-    // function renderHomepage(req, res) {
-    //   res.render('index', {
-    //     usernames: usernames,
-    //     challenges: challenges,
-    //     isAuth: isAuth
-    //   }); // load the index.ejs file
-    // }
-
-    // app.get('/', getUsernames, renderHomepage);
-
-
-    // =====================================
-    // CHALLENGES PAGE =====================
-    // =====================================
-
-    app.get('/challenges', function(req, res) {
-      isAuth = (req.isAuthenticated()) ? true : false;
-      Challenge.find({})
-        .exec((err, challenges) => {
-          if (err) {
-            res.send("Error has occured");
-          } else {
-            res.render('challenges', {
-              challenges: challenges,
-              isAuth: isAuth
-            });
-          }
+app.get('/challenges', function(req, res) {
+  isAuth = (req.isAuthenticated()) ? true : false;
+  Challenge.find({})
+    .exec((err, challenges) => {
+      if (err) {
+        res.send("Error has occured");
+      } else {
+        res.render('challenges', {
+          challenges: challenges,
+          isAuth: isAuth
         });
+      }
+    });
+});
+
+
+app.get('/challenges/:category', (req, res) => {
+
+  isAuth = (req.isAuthenticated()) ? true : false;
+  
+  Challenge.find({
+    category: req.params.category.charAt(0).toUpperCase() + req.params.category.slice(1)
+  }).exec((err, challenges) => {
+    if (err) {
+      res.send("An Error has occured");
+    } else {
+      res.render('challenges', {
+        challenges: challenges,
+        isAuth: isAuth
+      });
+    }
+  });
+
+});
+
+
+app.get('/search', (req, res) => {
+
+  isAuth = (req.isAuthenticated()) ? true : false;
+  
+  Challenge.find({
+    title: 'From my mobile phone lol lol'
+  }).exec((err, challenges) => {
+    if (err) {
+      res.send("An Error has occured");
+    } else {
+      res.render('challenges', {
+        challenges: challenges,
+        isAuth: isAuth
+      });
+    }
+  });
+
+});
+
+
+
+// =====================================
+// SINGLE CHALLENGE PAGE ===============
+// =====================================
+
+
+app.get('/c/:slug', function(req, res) {
+
+  isAuth = (req.isAuthenticated()) ? true : false;
+
+  Challenge.findOne({
+    slug: req.params.slug
+  }).exec((err, challenge) => {
+  if (err) {
+    res.send("error");
+  } else {
+
+    Challenge.findById(challenge._id, function (err, challenge) {
+      if (err) return handleError(err);
+
+      challenge.views = challenge.views + 1;
+      challenge.save(function (err, updated) {
+        if (err) return handleError(err);
+
+      });
     });
 
-    // =====================================
-    // SINGLE CHALLENGE PAGE ===============
-    // =====================================
 
+    Idea.find({
+      challenge_id: challenge._id
+    }).sort({'id': -1}).exec((err, ideas) => {
 
-    app.get('/c/:slug', function(req, res) {
+      if (err) console.log(err);
 
-      isAuth = (req.isAuthenticated()) ? true : false;
+      var contributors = [
+        {
+          local: {
 
-      Challenge.findOne({
-        slug: req.params.slug
-      }).exec((err, challenge) => {
-        if (err) {
-          res.send("error");
-        } else {
-
-          Challenge.findById(challenge._id, function (err, challenge) {
-            if (err) return handleError(err);
-
-            challenge.views = challenge.views + 1;
-            challenge.save(function (err, updated) {
-              if (err) return handleError(err);
-
-            });
-          });
-
-
-          Idea.find({
-            challenge_id: challenge._id
-          }).sort({'id': -1}).exec((err, ideas) => {
-
-            if (err) console.log(err);
-
-            var contributors = [];
-            for (let n = 0, len = ideas.length; n < len; n++) {
-              User.findById(ideas[n].author_id, (err, contributor) => {
-                contributors.push(contributor);
-              });
-            }
-
-            // User.find({
-            //   _id: ideas[n].author_id
-            // })
-
-            User.findById(challenge.author_id, (err, user) => {
-            console.log(user);
-
-            let name = '';
-            let email = '';
-
-            if (user.local.email) {
-              name = user.new_name;
-              email = user.local.email;
-            } else if (user.google.name) {
-              name = user.google.name;
-              email = user.google.email;
-            } else if (user.twitter.displayName) {
-              name = user.twitter.displayName;
-              email = user.twitter.email;
-            // } else if (user.new_name) {
-            //   name = user.new_name;
-            //   email = user.local.email;
-            } else {
-              name = user.facebook.name;
-              email = user.facebook.email;
-            }
-
-            console.log(contributors);
-
-
-            res.render('single-challenge', {
-              ideas: ideas,
-              challenge: challenge,
-              contributors: contributors,
-              user: req.user,
-              name: name,
-              isAuth: isAuth
-            });
-
-          });
-
-          });
-
-          
-
-
-
-
+          },
+          google: {
+            
+          }
         }
+      ];
+      for (let n = 0, len = ideas.length; n < len; n++) {
+        User.findById(ideas[n].author_id, (err, contributor) => {
+          contributors.push(contributor);
+        });
+      }
+
+      User.findById(challenge.author_id, (err, user) => {
+      console.log(user);
+
+      let name = '';
+      let email = '';
+
+      if (user.local.email) {
+        name = user.new_name;
+        email = user.local.email;
+      } else if (user.google.name) {
+        name = user.google.name;
+        email = user.google.email;
+      } else if (user.twitter.displayName) {
+        name = user.twitter.displayName;
+        email = user.twitter.email;
+      // } else if (user.new_name) {
+      //   name = user.new_name;
+      //   email = user.local.email;
+      } else {
+        name = user.facebook.name;
+        email = user.facebook.email;
+      }
+
+      console.log(contributors);
+
+
+      res.render('single-challenge', {
+        ideas: ideas,
+        challenge: challenge,
+        contributors: contributors,
+        user: req.user,
+        name: name,
+        isAuth: isAuth
       });
+
+    });
+
+    });
+
+    }
+});
 
       // Challenge.findOne({
       //   slug: req.params.slug
@@ -349,6 +302,7 @@ app.get('/', function(req, res) {
 
 
     // POST add a challenge is in SERVER.js
+
 
 
     // =====================================

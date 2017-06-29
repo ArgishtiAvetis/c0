@@ -24,7 +24,7 @@
 		<% for(let i = 0; i < lights.length; i++) { %>
 			<section class="col-sm-6 col-lg-3">
 				<div class="item item-category">
-					<img src="/uploads/c/<%= lights[i].img0 %>" alt="<%= lights[i].title %>" class="img-responsive">
+					<a href="/c/<%= lights[i].slug %>"><img src="/uploads/c/<%= lights[i].img0 %>" alt="<%= lights[i].title %>" class="img-responsive"></a>
 					<div class="item-descr">
 						<h1 class="thumbnail-title"><a href="/c/<%= lights[i].slug %>"><%= lights[i].title %></a>  <br /><span class="badge">15 Ideas</span></h1>
 						<p><%= lights[i].overview %></p>
@@ -44,14 +44,15 @@
 						</div>
 						<span>33 days left</span>
             <br />
-            <p class="thumb-in-cat text-center">In <a href="<%= lights[i].category %>"><%= lights[i].category %></a></p>
+            <p class="thumb-in-cat text-center">In 
+            <a href="/challenges/<%= lights[i].category.charAt(0).toLowerCase() + lights[i].category.slice(1) %>"><%= lights[i].category %></a></p>
 					</div>
 
 				</div>
 			</section>
 			<% } %>
 			<section class="col-md-12 text-center col-view-all-category">
-				<a href="/" class="btn btn-view-all-category">View All in This Category</a>
+				<a href="/" class="btn btn-view-all-category">View All Light Challenges</a>
 			</section>
 	</div>
 </div>
@@ -86,14 +87,14 @@
 						</div>
 						<span>33 days left</span>
             <br />
-            <p class="thumb-in-cat">In <a href="<%= teasers[i].category %>"><%= teasers[i].category %></a></p>
+            <p class="thumb-in-cat">In <a href="/challenges/<%= teasers[i].category.charAt(0).toLowerCase() + teasers[i].category.slice(1) %>"><%= teasers[i].category %></a></p>
 					</div>
 
 				</div>
 			</section>
 			<% } %>
 			<section class="col-md-12 text-center col-view-all-category">
-				<a href="/" class="btn btn-view-all-category">View All in This Category</a>
+				<a href="/" class="btn btn-view-all-category">View All Teasers</a>
 			</section>
 	</div>
 </div>
@@ -129,14 +130,14 @@
 						</div>
 						<span>33 days left</span>
             <br />
-            <p class="thumb-in-cat">In <a href="<%= brainstorms[i].category %>"><%= brainstorms[i].category %></a></p>
+            <p class="thumb-in-cat">In <a href="/challenges/<%= brainstorms[i].category.charAt(0).toLowerCase() + brainstorms[i].category.slice(1) %>"><%= brainstorms[i].category %></a></p>
 					</div>
 
 				</div>
 			</section>
 			<% } %>
 			<section class="col-md-12 text-center col-view-all-category">
-				<a href="/" class="btn btn-view-all-category">View All in This Category</a>
+				<a href="/" class="btn btn-view-all-category">View All Brainstorm Challenges</a>
 			</section>
 	</div>
 </div>
@@ -151,8 +152,8 @@
 			<div class="col-md-12">
 				<h1 class="get-started">Get Started Today</h1>
 				<h3 class="get-started-info">Become a Thinker and start solving challenges or start a new challenge.</h3>
-				<a href="" class="btn btn-start-thinker">Become a Thinker</a>
-				<a href="" class="btn btn-start-challenge">Start a Challenge</a>
+				<a href="/signup" class="btn btn-start-thinker">Become a Thinker</a>
+				<a href="/profile/add-challenge" class="btn btn-start-challenge">Start a Challenge</a>
 			</div>
 		</div>
 	</div>
