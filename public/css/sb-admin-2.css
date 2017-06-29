@@ -17,7 +17,7 @@ body {
 @media (min-width: 768px) {
   #page-wrapper {
     position: inherit;
-    margin: 25px 0 0 250px;
+    margin: 100px 0 0 250px;
     padding: 0 30px;
     border-left: 1px solid #e7e7e7;
   }
@@ -104,7 +104,7 @@ body {
     z-index: 1;
     position: absolute;
     width: 250px;
-    margin-top: 51px;
+    margin-top: 100px;
   }
   .navbar-top-links .dropdown-messages,
   .navbar-top-links .dropdown-tasks,
