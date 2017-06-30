@@ -300,6 +300,12 @@ li.top-right-buttons a {
 	text-align: left
 }
 
+.type-icon {
+	height: 35px;
+	margin-right: 15px;
+	float: left;
+}
+
 div.progress {
 	margin-bottom: 5px;
 }
@@ -451,7 +457,8 @@ div.progress {
 }
 
 .copyright {
-	border-top: #eee;
+	border-top: ;
+	margin-top: 20px;
 }
 
 
