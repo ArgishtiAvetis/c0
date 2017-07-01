@@ -110,7 +110,7 @@ app.post('/add-challenge', (req, res) => {
       img0: img0.name
     });
 
-    var random = '121212';
+    //var random = '121212';
 
     img0.mv(__dirname + '/public/uploads/c/' + img0.name, function(err) {
       if (err) {
@@ -126,6 +126,36 @@ app.post('/add-challenge', (req, res) => {
     res.redirect('/profile');
   } 
 });
+
+app.post('/profile/edit-account', (req, res) => {
+      let id = req.body.a_n;
+      let name = req.body.name;
+      let email = req.body.email;
+      let country = req.body.country;
+      let old_country = req.body.old_country;
+      let profile_picture = req.files.profile_picture;
+
+      profile_picture.mv(__dirname + '/public/uploads/u/' + profile_picture.name, function(err) {
+        if (err) {
+          console.log('Error ->>> ' + err);
+        } else {
+          console.log('file moved successfully');
+        }
+      });
+
+      User.update({
+        _id: id
+      }, {
+        $set: {
+          new_name: name,
+          new_email: email,
+          country: (country) ? country : old_country,
+          img_url: '/uploads/u/' + profile_picture.name
+        }
+      }, () => res.redirect('/profile/account'));
+    });
+
+
 
 app.post('/contribute', (req, res) => {
 

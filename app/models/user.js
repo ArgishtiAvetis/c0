@@ -32,7 +32,10 @@ var userSchema = mongoose.Schema({
     new_name: String,
     new_email: String,
     country: String,
-    img_url: String,
+    img_url: {
+        type: String,
+        default: 'https://www.w3schools.com/bootstrap/img_avatar1.png'
+    },
     short_bio: String
 
 });

@@ -114,7 +114,11 @@ app.get('/', function(req, res) {
 
 app.get('/challenges', function(req, res) {
   isAuth = (req.isAuthenticated()) ? true : false;
-  Challenge.find({})
+
+  if (req.query.category) {
+    Challenge.find({
+      category: req.query.category.trim()
+    })
     .exec((err, challenges) => {
       if (err) {
         res.send("Error has occured");
@@ -125,6 +129,19 @@ app.get('/challenges', function(req, res) {
         });
       }
     });
+  } else {
+    Challenge.find({})
+    .exec((err, challenges) => {
+      if (err) {
+        res.send("Error has occured");
+      } else {
+        res.render('challenges', {
+          challenges: challenges,
+          isAuth: isAuth
+        });
+      }
+    });
+  }
 });
 
 
@@ -250,6 +267,7 @@ app.get('/c/:slug', function(req, res) {
         contributors: contributors,
         user: req.user,
         name: name,
+        user_img: user.img_url,
         isAuth: isAuth
       });
 
@@ -439,24 +457,7 @@ app.get('/c/:slug', function(req, res) {
 
     });
 
-    app.post('/profile/edit-account', (req, res) => {
-      let id = req.body.a_n;
-      let name = req.body.name;
-      let email = req.body.email;
-      let country = req.body.country;
-      let old_country = req.body.old_country;
-
-      User.update({
-        _id: id
-      }, {
-        $set: {
-          new_name: name,
-          new_email: email,
-          country: (country) ? country : old_country
-        }
-      }, () => res.redirect('/profile/account'));
-    });
-
+  
     
 
     app.post('/c/d/:challenge_id', (req, res) => {
