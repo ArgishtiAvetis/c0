@@ -97,6 +97,7 @@ app.post('/add-challenge', (req, res) => {
   } else {
     
     var img0 = req.files.img0;
+    var file0 = req.files.files_resources;
 
     var newChallenge = new Challenge({
       title: req.body.title.trim(),
@@ -107,12 +108,22 @@ app.post('/add-challenge', (req, res) => {
       author_id: req.body.author_id.trim(),
       category: req.body.category.trim(),
       day_limit: req.body.day_limit.trim(),
-      img0: img0.name
+      img0: img0.name,
+      is_public: req.body.public_private,
+      files_resources: file0.name
     });
 
     //var random = '121212';
 
     img0.mv(__dirname + '/public/uploads/c/' + img0.name, function(err) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('file moved successfully');
+      }
+    });
+
+    file0.mv(__dirname + '/public/uploads/resources/c/' + file0.name, function(err) {
       if (err) {
         console.log(err);
       } else {

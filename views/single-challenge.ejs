@@ -64,7 +64,14 @@
 				</p>
       		</div>
 			<div id="files" class="hide">
-				<h1>Files lol</h1>
+				<h1 class="black">Files &amp; Resources</h1>
+
+				<% if (challenge.files_resources) { %>
+					<a href="/uploads/resources/c/<%= challenge.files_resources %>"><%= challenge.files_resources %></a>
+				<% } else { %>
+				This challenge doesn't have any extra files.
+				<% } %>
+				
 			</div>
 			<div id="solutions" class="hide">
 				<h1 class="black">Contributions</h1>
@@ -90,7 +97,7 @@
 					<%	} %>
 
 				<% } else { %>
-				Private
+				The Contributions for this Challenge are Private.
 				<% } %>
 			</div>
 

@@ -13,6 +13,7 @@ var challengeSchema = mongoose.Schema({
   category: String,
   day_limit: Number,
   img0: String,
+  files_resources: String,
   views: {
     type: Number,
     default: 0
