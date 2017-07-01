@@ -133,15 +133,19 @@ app.post('/profile/edit-account', (req, res) => {
       let email = req.body.email;
       let country = req.body.country;
       let old_country = req.body.old_country;
+      let old_img = req.body.old_img;
+      
       let profile_picture = req.files.profile_picture;
-
-      profile_picture.mv(__dirname + '/public/uploads/u/' + profile_picture.name, function(err) {
-        if (err) {
-          console.log('Error ->>> ' + err);
-        } else {
-          console.log('file moved successfully');
-        }
-      });
+      if (req.files.profile_picture) {
+        
+        profile_picture.mv(__dirname + '/public/uploads/u/' + profile_picture.name, function(err) {
+          if (err) {
+            console.log('Error ->>> ' + err);
+          } else {
+            console.log('file moved successfully');
+          }
+        });
+      }
 
       User.update({
         _id: id
@@ -150,7 +154,7 @@ app.post('/profile/edit-account', (req, res) => {
           new_name: name,
           new_email: email,
           country: (country) ? country : old_country,
-          img_url: '/uploads/u/' + profile_picture.name
+          img_url: (profile_picture) ? '/uploads/u/' + profile_picture.name : old_img
         }
       }, () => res.redirect('/profile/account'));
     });

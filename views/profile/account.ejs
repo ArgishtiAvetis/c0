@@ -51,13 +51,14 @@
 
                 <form enctype="multipart/form-data" method="post" action="/profile/edit-account">
                   <input type="hidden" value="<%= id %>" name="a_n" />
+                  <input type="hidden" value="<%= user.img_url %>" name="old_img" />
                   <div class="form-group">
                     <label for="name">Name</label>
                     <input <% if (email) { %> value="<%= name %>" <% } %> type="text" name="name" id="name" class="form-control" />
                   </div>
                   <div class="form-group">
                     <label for="profile_picture">Profile Picture</label>
-                    <input type="file" name="profile_picture" id="profile_picture" class="form-control" />
+                    <input type="file" name="profile_picture" id="profile_picture" class="form-control" value="sdd.jpg" />
                   </div>
                   <div class="form-group">
                     <label for="email">Email</label>
