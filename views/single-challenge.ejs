@@ -168,7 +168,16 @@
 			</div>
 
 		</div>
-		<div class="col-md-4">Sidebar</div>
+		<div class="col-md-4">
+			<h2>The Author will reward up to <%= challenge.rewards_number %> contributer<%= (challenge.rewards_number > 1) ? 's' : '' %></h2>
+			<% for(let q = 0, len = challenge.rewards_number; q < len; q++) { %>
+
+			<div class="perk">
+				<h3><b>Reward:</b> <%= challenge.reward %></h3>
+			</div>
+
+			<%	} %>
+		</div>
 
 </div>
 

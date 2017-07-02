@@ -110,7 +110,9 @@ app.post('/add-challenge', (req, res) => {
       day_limit: req.body.day_limit.trim(),
       img0: img0.name,
       is_public: req.body.public_private,
-      files_resources: file0.name
+      files_resources: file0.name,
+      reward: req.body.reward,
+      rewards_number: req.body.rewards_number
     });
 
     //var random = '121212';

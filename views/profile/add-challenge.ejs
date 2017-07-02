@@ -64,7 +64,7 @@
     </div>
   </div>
 
-  <div class="col-sm-6">
+  <div class="col-lg-4 col-md-6">
     <div class="form-group">
       <label for="img0">Upload an Image</label>
       <input type="file" name="img0" class="form-control" id="img0" required />
@@ -74,26 +74,52 @@
     </style>
   </div>
 
-  <div class="col-sm-6">
+  <div class="col-lg-4 col-md-6">
     <div class="form-group">
       <label for="day_limit">For how many days do You want the Challenge to run?</label>
-      <input type="number" name="day_limit" class="form-control" id="day_limit" required />
+      <select name="day_limit" class="selectpicker form-control" id="day_limit" required>
+        <option>7</option>
+        <option>15</option>
+        <option>30</option>
+        <option>45</option>
+        <option>60</option>
+        <option>90</option>
+      </select>
     </div>
   </div>
 
-  <div class="col-sm-6">
+  <div class="col-lg-4 col-md-6">
+    <div class="form-group">
+      <label for="perk">Rewards / Perks</label>
+      <input type="text" name="reward" placeholder="e.g. $50 or a product sample" class="form-control" required />
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-6">
     <div class="form-group">
       <label for="files_resources">Files &amp; Resources</label>
       <input type="file" name="files_resources" id="files_resources" class="form-control" />
     </div>
   </div>
 
-  <div class="col-sm-6">
+  <div class="col-lg-4 col-md-6">
     <div class="form-group">
       <label for="public_private">Should the Contributions be Public or Private?</label>
       <select name="public_private" class="selectpicker form-control" id="public_private">
         <option value="true">Public</option>
         <option value="false">Private</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6">
+    <div class="form-group">
+      <label for="rewards_number">How many rewards are you willing to give?</label>
+      <select id="rewards_number" class="selectpicker form-control" name="rewards_number" required>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option value="more">More than 5</option>
       </select>
     </div>
   </div>

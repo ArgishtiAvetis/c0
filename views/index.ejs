@@ -36,8 +36,7 @@
 						<!-- <h3 class="thumbnail-by">by <a href="<%= lights[i].author_id %>"><%= %> -->
 						</a></h3>
 						<span class="item-reward">
-						Reward:
-							<span class="glyphicon glyphicon-usd"></span>25
+						<b>Reward: </b><%= lights[i].reward %>
 						</span>
 
 						<div class="progress">
@@ -75,13 +74,12 @@
 		<% for(let i = 0; i < teasers.length; i++) { %>
 			<section class="col-sm-6 col-lg-3">
 				<div class="item item-category">
-					<img src="/uploads/c/<%= teasers[i].img0 %>" alt="<%= teasers[i].title %>" class="img-responsive">
+					<a href="/c/<%= teasers[i].slug %>"><img src="/uploads/c/<%= teasers[i].img0 %>" alt="<%= teasers[i].title %>" class="img-responsive"></a>
 					<div class="item-descr">
 						<h1 class="thumbnail-title"><a href="/c/<%= teasers[i].slug %>"><%= teasers[i].title %></a> &nbsp;<span class="badge">15 Ideas</span></h1>
 						<!-- <h3 class="thumbnail-by">by <a href="<%= teasers[i].author_id %>"><%= usernames[0] %></a></h3> -->
 						<span class="item-reward">
-						Reward:
-							<span class="glyphicon glyphicon-usd"></span>25
+						<b>Reward: </b><%= teasers[i].reward %>
 						</span>
 
 						<div class="progress">
@@ -118,13 +116,12 @@
 		<% for(let i = 0; i < brainstorms.length; i++) { %>
 			<section class="col-sm-6 col-lg-3">
 				<div class="item item-category">
-					<img src="/uploads/c/<%= brainstorms[i].img0 %>" alt="<%= brainstorms[i].title %>" class="img-responsive">
+					<a href="/c/<%= brainstorms[i].slug %>"><img src="/uploads/c/<%= brainstorms[i].img0 %>" alt="<%= brainstorms[i].title %>" class="img-responsive"></a>
 					<div class="item-descr">
 						<h1 class="thumbnail-title"><a href="/c/<%= brainstorms[i].slug %>"><%= brainstorms[i].title %></a> &nbsp;<span class="badge">15 Ideas</span></h1>
 						<!-- <h3 class="thumbnail-by">by <a href="<%= brainstorms[i].author_id %>"><%= usernames[0] %></a></h3> -->
 						<span class="item-reward">
-						Reward:
-							<span class="glyphicon glyphicon-usd"></span>25
+						<b>Reward: </b><%= brainstorms[i].reward %>
 						</span>
 
 						<div class="progress">

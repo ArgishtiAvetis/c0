@@ -532,6 +532,13 @@ div.progress {
 	font-weight: 700;
 }
 
+.perk {
+	padding: 10px 40px;
+	border: 1px solid rgba(0,0,0,0.2);
+	background: white;
+	margin: 10px 0;
+}
+
 #p-progress-days {
 	color: black;
 	font-size: 20px;

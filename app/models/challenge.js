@@ -12,6 +12,8 @@ var challengeSchema = mongoose.Schema({
   author_id: String,
   category: String,
   day_limit: Number,
+  reward: String,
+  rewards_number: Number,
   img0: String,
   files_resources: String,
   views: {
