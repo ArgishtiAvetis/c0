@@ -2,15 +2,16 @@
 module.exports = {
 
     'facebookAuth' : {
-        'clientID'      : '438082099889129', // your App ID
-        'clientSecret'  : '568762d6abc77fda9d29d87c149abdaf', // your App Secret
-        'callbackURL'   : 'https://challer001.herokuapp.com/auth/facebook/callback'
+        'clientID'      : '1331396126958709', // your App ID
+        'clientSecret'  : '724d23fdbcbd55354084e34335ffeeff', // your App Secret
+        'callbackURL'   : 'https://challer001.herokuapp.com/auth/facebook/callback',
+        'profileFields': ['id', 'displayName', 'email']
     },
 
     'twitterAuth' : {
-        'consumerKey'       : 'your-consumer-key-here',
-        'consumerSecret'    : 'your-client-secret-here',
-        'callbackURL'       : 'http://localhost:8080/auth/twitter/callback'
+        'consumerKey'       : 'xpD82FCQTYKANCSBNfxaZ2r3C',
+        'consumerSecret'    : 'NiCN0cemIhCqLlaAlJsROQPy4COBbS1EnCJSWapB9vlDKtBLax',
+        'callbackURL'       : 'https://challer001.herokuapp.com/auth/twitter/callback'
     },
 
     'googleAuth' : {
