@@ -11,7 +11,7 @@
 
 				<select name="category" class="selectpicker form-control" data-live-search="true">
 					<option value="">All Categories</option>
-					<optgroup label="Arts &amp; Crafts">
+					  <optgroup label="Arts &amp; Crafts">
 			            <option value="Art">Art</option>
 			            <option value="Architecture">Architecture</option>
 			            <option value="Music">Music</option>
@@ -40,23 +40,27 @@
 			<div class="form-group choose-type">
 
 				<select name="type" class="selectpicker form-control" data-live-search="true">
-					<option value="">All Types</option>
-					<option>Category</option>
-					<option>Category</option>
-					<option>Category</option>
-					<option>Category</option>
+					<optgroup>
+						<option value="">All Types</option>
+						<option value="light">Light</option>
+						<option value="teaser">Teaser</option>
+						<option value="brainstorm">Brainstorm</option>
+					</optgroup>
 				</select>
 			</div>
-			<div class="form-group choose-sort">
+			<div class="form-group choose-type">
 
-				<select name="sort" class="selectpicker form-control" data-live-search="true">
-					<option value="">All Sorts</option>
-					<option>Category</option>
-					<option>Category</option>
-					<option>Category</option>
-					<option>Category</option>
+				<select name="sortBy" class="selectpicker form-control" data-live-search="true">
+					<optgroup>
+						<option value="">Sort By</option>
+						<option>Category</option>
+						<option>Category</option>
+						<option>Category</option>
+						<option>Category</option>
+					</optgroup>
 				</select>
 			</div>
+			<br />
 			<div class="form-group">
 				<button type="submit">UPDATE</button>
 			</div>

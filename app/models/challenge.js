@@ -30,7 +30,7 @@ var challengeSchema = mongoose.Schema({
   },
   published: {
     type: Date,
-    default: Date.now
+    default: Date()
   }
 });
 

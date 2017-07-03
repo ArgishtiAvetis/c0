@@ -99,7 +99,7 @@
       			        </div>
 
       			        </li>
-      			        <li><a href="/">How It Works</a></li>
+      			        <li><a href="/">A Look Inside</a></li>
       			      	<li class="navbar-search">
       			        	<form action="/search" method="get">
       				          	<div class="input-group">
@@ -118,15 +118,36 @@
 
       		      	<ul class="nav navbar-nav navbar-right">
       			        <li class="top-right-buttons" style="margin-right: 25px;">
-      			       		<a href="/profile/add-challenge" class="btn btn-default btn-start-challenge">Start a Challenge</a>
+      			       		<a style="display: none;" href="/profile/add-challenge" class="btn btn-default btn-start-challenge">Start a Challenge</a>
       			       	</li>
                     <% if (isAuth) { %>
-                      <li>
-                        <a href="/profile" class="tablet-hide">Account</a>
-                      </li>
-                      <li>
-                        <a href="/logout" class="tablet-hide">Log out</a>
-                      </li>
+
+                    <li class="navbar-account-mobile"><a class="navbar-account-main" href="/profile">Account</a></li>
+                    <li class="navbar-account-mobile"><a class="navbar-account-main" href="/logout">Log out</a></li>
+
+                    <li>
+                      <a href="/logout" class="tablet-hide navbar-icon navbar-notifications">
+                        <img src="/img/icons/notification_icon.png" class="img-responsive" alt="icon" style="width: 35px" />
+                      </a>
+                    </li>
+                    <li>
+                    <li class="dropdown" id="navbar-account">
+                      <a class="dropdown-toggle tablet-hide navbar-icon" data-toggle="dropdown" href="#">
+                        <img src="/img/icons/account_icon.png" class="img-responsive" alt="icon" style="width: 55px" />
+                      </a>
+                      <ul class="dropdown-menu" style="border: none; width: 200px;">
+
+                      <% for (let n = 0, len = challenges.length; n < len; n++) { %>
+
+                      <li><a class="navbar-account-c" href="/c/<%= challenges[n].slug %>" style="text-overflow: ellipsis;overflow: hidden;"><%= challenges[n].title %></a></li>
+
+                      <%  } %>
+                        <hr />
+                        <li><a class="navbar-account-main" href="/profile">Account</a></li>
+                        <li><a class="navbar-account-main" href="/logout">Log out</a></li>
+                      </ul>
+                    </li>
+                    </li>
                     <% } else { %>
                       <li>
                         <a href="/login" class="tablet-hide">Log in</a>
@@ -136,26 +157,6 @@
                       </li>
                     <% } %>
                     
-                      <div id="tablet-nav-account">
-                        <a class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span> </a>
-                        <div class="dropdown-menu">
-                          <% if (isAuth) { %>
-                            <li>
-                              <a href="/profile">Account</a>
-                            </li>
-                            <li>
-                              <a href="/logout">Log out</a>
-                            </li>
-                          <% } else { %>
-                            <li>
-                              <a href="/login">Log in</a>
-                            </li>
-                            <li>
-                              <a href="/signup">Sign up</a>
-                            </li>
-                          <% } %>
-                        </div>
-                      </div>
                   </ul>
       		    </div>
       		  </div>

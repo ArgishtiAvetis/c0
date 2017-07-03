@@ -1,4 +1,9 @@
 $(document).ready(function() {
+
+  $('#navbar-account').hover(function() {
+    $(this).toggleClass('open');
+  });
+
   $('.delete').click(deleteChallenge);
 
   if (screen.width < 768) {

@@ -46,6 +46,32 @@ nav.navbar {
 	border: 2px solid #2196F3;
 }
 
+.nav li a.navbar-icon {
+	padding-top: 0;
+	margin-top: 5px;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.nav li a.navbar-account-main {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	font-size: 25px;
+}
+
+.nav li a.navbar-account-c, .nav li a.navbar-account-c.active {
+	margin: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.nav li a.navbar-notifications {
+	padding-top: 0;
+	margin-top: 15px;
+}
+
 .navbar-toggle .icon-bar {
 	background: #2196F3;
 }
@@ -713,7 +739,11 @@ button.green:hover {
 
 @media screen and (max-width: 950px) {
 
-	nav li a.tablet-hide {
+	.nav li.navbar-account-mobile {
+		display:block;
+	}
+
+	/*nav li a.tablet-hide {
 	  display: none;
 	}
 
@@ -722,7 +752,7 @@ button.green:hover {
 	  margin-top: 5px;
 	  padding-top: 5px;
 	  text-decoration: none;
-	}
+	}*/
 
 	#intro-slogan {
 		font-size: 40px;
@@ -760,7 +790,9 @@ button.green:hover {
 
 }
 
-
+.nav li.navbar-account-mobile {
+	display:none;
+}
 
 
 

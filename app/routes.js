@@ -87,15 +87,39 @@ app.get('/', function(req, res) {
                       console.log(lightsUsers);
                       console.log('-> next <-');
                       console.log(teasersUsers);
-                      res.render('index', {
-                        lights_users: lightsUsers,
-                        teasers_users: teasersUsers,
-                        usernames: usernames,
-                        lights: light,
-                        teasers: teaser,
-                        brainstorms: brainstorm,
-                        isAuth: isAuth
-                      }); // load the index.ejs file
+
+                      if (isAuth) {
+                        Challenge.find({
+                          author_id: req.user._id
+                        })
+                        .exec((err, challenges) => {
+                          if (err) {
+                            res.send("Error has occured");
+                          } else {
+                             res.render('index', {
+                              lights_users: lightsUsers,
+                              teasers_users: teasersUsers,
+                              usernames: usernames,
+                              lights: light,
+                              teasers: teaser,
+                              brainstorms: brainstorm,
+                              isAuth: isAuth,
+                              challenges: challenges
+                            }); // load the index.ejs file
+                          }
+                        });
+                      } else {
+                        res.render('index', {
+                          lights_users: lightsUsers,
+                          teasers_users: teasersUsers,
+                          usernames: usernames,
+                          lights: light,
+                          teasers: teaser,
+                          brainstorms: brainstorm,
+                          isAuth: isAuth,
+                          challenges: []
+                        }); // load the index.ejs file
+                      }
 
 
                       }
@@ -115,10 +139,19 @@ app.get('/', function(req, res) {
 app.get('/challenges', function(req, res) {
   isAuth = (req.isAuthenticated()) ? true : false;
 
-  if (req.query.category) {
-    Challenge.find({
-      category: req.query.category.trim()
-    })
+  if (req.query.category || req.query.type || req.query.sortBy) {
+
+    var filters = {};
+
+    if (req.query.category) {
+      filters.category = req.query.category.trim();
+    }
+
+    if (req.query.type) {
+      filters.type = req.query.type.trim();
+    }
+
+    Challenge.find(filters)
     .exec((err, challenges) => {
       if (err) {
         res.send("Error has occured");
@@ -130,7 +163,7 @@ app.get('/challenges', function(req, res) {
       }
     });
   } else {
-    Challenge.find({})
+    Challenge.find({}).sort({'published': -1})
     .exec((err, challenges) => {
       if (err) {
         res.send("Error has occured");
@@ -260,16 +293,40 @@ app.get('/c/:slug', function(req, res) {
 
       console.log(contributors);
 
+      if (isAuth) {
+        Challenge.find({
+          author_id: req.user._id
+        })
+        .exec((err, challenges) => {
+          if (err) {
+            res.send("Error has occured");
+          } else {
+             res.render('single-challenge', {
+              ideas: ideas,
+              challenge: challenge,
+              contributors: contributors,
+              user: req.user,
+              name: name,
+              user_img: user.img_url,
+              isAuth: isAuth,
+              challenges: challenges
+            });
+          }
+        });
+      } else {
 
-      res.render('single-challenge', {
-        ideas: ideas,
-        challenge: challenge,
-        contributors: contributors,
-        user: req.user,
-        name: name,
-        user_img: user.img_url,
-        isAuth: isAuth
-      });
+         res.render('single-challenge', {
+          ideas: ideas,
+          challenge: challenge,
+          contributors: contributors,
+          user: req.user,
+          name: name,
+          user_img: user.img_url,
+          isAuth: isAuth,
+          challenges: []
+        });
+
+      }
 
     });
 
@@ -338,7 +395,8 @@ app.get('/c/:slug', function(req, res) {
         isAuth = (req.isAuthenticated()) ? true : false;
         res.render('login.ejs', {
           message: req.flash('loginMessage'),
-          isAuth: isAuth
+          isAuth: isAuth,
+          challenges: []
         });
       }
     });
@@ -359,9 +417,11 @@ app.get('/c/:slug', function(req, res) {
       } else {
         // render the page and pass in any flash data if it exists
         isAuth = (req.isAuthenticated()) ? true : false;
+
         res.render('signup.ejs', {
           message: req.flash('signupMessage'),
-          isAuth: isAuth
+          isAuth: isAuth,
+          challenges: []
         });
       }
     });
