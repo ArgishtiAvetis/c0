@@ -1,0 +1,51 @@
+/
+/:category/
+/author/:name
+/:slug-slug-slug-###
+/search?searchterm=<keyword>
+
+// Language support
+
+/:lang/
+/:lang/author/:name
+/:lang/:slug-slug-slug-###
+/:lang/search?searchterm-<keyword>
+
+
+/login
+/admin
+/admin/all
+/admin/add
+
+
+ExpressJS framework
+
+MongoDB mlab.com
+
+mongoose  
+
+post -> title title_fr title_zh title_ru title_hy 
+
+
+	/partials/header.ejs
+	/partials/footer.ejs
+	
+
+index.ejs  static, top posts, most recent posts, categories
+
+category.ejs static, category post 
+
+single-post.ejs static, post
+
+search.ejs static, search results
+
+author.ejs static, static -> about the author
+
+
+
+
+
+
+
+
+

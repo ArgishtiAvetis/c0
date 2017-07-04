@@ -14,6 +14,10 @@ h1, h2, h3, h4, h5, h6, p {
 	color: black;
 }
 
+.divider {
+	border-bottom: 1px solid #eee;
+}
+
 .margin-auto {
 	margin: auto;
 }
@@ -58,13 +62,18 @@ nav.navbar {
 	margin-bottom: 0;
 	padding-top: 0px;
 	padding-bottom: 0px;
-	font-size: 25px;
+	font-size: 19px;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .nav li a.navbar-account-c, .nav li a.navbar-account-c.active {
 	margin: 0;
 	padding-top: 0;
 	padding-bottom: 0;
+	font-size: 16px;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .nav li a.navbar-notifications {
@@ -285,7 +294,7 @@ li.top-right-buttons a {
 	border: 1px solid rgba(0,0,0,0.2);
 	background: white;
 	padding-bottom: 15px;
-	height: 425px;
+	height: 500px;
 }
 
 .item-category {
@@ -303,6 +312,8 @@ li.top-right-buttons a {
 
 .item img {
 	margin: auto;
+	height: 200px;
+	width: 100%;
 }
 
 .thumbnail-title {

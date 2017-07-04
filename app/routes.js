@@ -230,11 +230,23 @@ if (isAuth) {
       if (err) {
         res.send("Error has occured");
       } else {
-        res.render('challenges', {
-          challenges: challenges,
-          isAuth: isAuth,
-          name: name
+
+        Challenge.find({
+          author_id: req.user._id
+        })
+        .exec((err, myChallenges) => {
+          if (err) {
+            res.send("Error has occured");
+          } else {
+            res.render('challenges', {
+            challenges: challenges,
+            myChallenges: myChallenges,
+            isAuth: isAuth,
+            name: name
+          });
+          }
         });
+        
       }
     });
   } else {
@@ -243,11 +255,23 @@ if (isAuth) {
       if (err) {
         res.send("Error has occured");
       } else {
-        res.render('challenges', {
-          challenges: challenges,
-          isAuth: isAuth,
-          name: name
+
+        Challenge.find({
+          author_id: req.user ? req.user._id : '1'
+        })
+        .exec((err, myChallenges) => {
+          if (err) {
+            res.send("Error has occured");
+          } else {
+            res.render('challenges', {
+              challenges: challenges,
+              myChallenges: challenges,
+              isAuth: isAuth,
+              name: name
+            });
+          }
         });
+
       }
     });
   }

@@ -136,15 +136,22 @@
                         <img src="/img/icons/account_icon.png" class="img-responsive" alt="icon" style="width: 55px" />
                       </a>
                       <ul class="dropdown-menu" style="border: none; width: 200px;">
+                      <li><a class="navbar-account-main" href="/profile"><%= name %></a></li>
+
+                      <div class="divider"></div>
 
                       <% for (let n = 0, len = challenges.length; n < len; n++) { %>
 
-                      <li><a class="navbar-account-c" href="/c/<%= challenges[n].slug %>" style="text-overflow: ellipsis;overflow: hidden;"><%= challenges[n].title %></a></li>
+                      <li><a class="navbar-account-c" href="/c/<%= challenges[n].slug %>"><%= challenges[n].title %></a></li>
 
                       <%  } %>
-                        <hr />
-                        <li><a class="navbar-account-main" href="/profile"><%= name %></a></li>
-                        <li><a class="navbar-account-main" href="/logout">Log out</a></li>
+                        <div class="divider"></div>
+                        <li><a class="navbar-account-main" href="/profile/account"><span class="fa fa-gears"></span> Settings</a></li>
+                        <li>
+                        <a class="navbar-account-main" href="/logout">
+                        <span class="fa fa-sign-out"></span>
+                        Log out
+                        </a></li>
                       </ul>
                     </li>
                     </li>

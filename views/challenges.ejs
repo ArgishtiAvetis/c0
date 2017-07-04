@@ -5,11 +5,50 @@
 	<div class="col-md-12">
 		<h1>Filter Challenges By Type and Category</h1>
 	</div>
+
+	<style type="text/css">
+		
+		.filters-div .form-group {
+			margin: 15px 20px;
+		}
+
+		.filters-div button {
+			border: 2px solid darkgreen;
+			border-radius: 0;
+			padding: 7px 10px;
+			font-size: 20px;
+			color: black;
+		}
+
+		.filters-div span {
+			color: black;
+		}
+
+		.filters-div button:hover span {
+			color: white;
+			background: none;
+		}
+
+		.filters-div button:hover {
+			border: 2px solid darkgreen;
+			background: #3097d1;
+		}
+ 
+		div.bootstrap-select.open {
+			border: 2px solid darkgreen;
+		}
+
+		.btn-update {
+			background: none;
+		}
+
+	</style>
+
 	<div class="col-md-12 filters-div">
 		<form class="form-inline" action="/challenges" method="get">
 			<div class="form-group choose-category">
 
-				<select name="category" class="selectpicker form-control" data-live-search="true">
+				<select name="category" class="selectpicker" data-live-search="true">
 					<option value="">All Categories</option>
 					  <optgroup label="Arts &amp; Crafts">
 			            <option value="Art">Art</option>
@@ -39,7 +78,7 @@
 			</div>
 			<div class="form-group choose-type">
 
-				<select name="type" class="selectpicker form-control" data-live-search="true">
+				<select name="type" class="selectpicker" data-live-search="true">
 					<optgroup>
 						<option value="">All Types</option>
 						<option value="light">Light</option>
@@ -49,20 +88,12 @@
 				</select>
 			</div>
 			<div class="form-group choose-type">
-
-				<select name="sortBy" class="selectpicker form-control" data-live-search="true">
-					<optgroup>
-						<option value="">Sort By</option>
-						<option>Category</option>
-						<option>Category</option>
-						<option>Category</option>
-						<option>Category</option>
-					</optgroup>
+				<select name="sortBy" class="selectpicker">
+					<option value="">Sort By</option>
 				</select>
 			</div>
-			<br />
 			<div class="form-group">
-				<button type="submit">UPDATE</button>
+				<button type="submit" class="btn btn-primary btn-update">UPDATE</button>
 			</div>
 		</form>
 	</div>
