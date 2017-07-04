@@ -518,7 +518,32 @@ app.get('/c/:slug', function(req, res) {
     });
 
   
-    
+app.get('/start-challenge', isLoggedIn, (req, res) => {
+
+  Challenge.find({
+    author_id: req.user._id
+  })
+  .exec((err, challenges) => {
+    if (err) {
+      res.send("Error has occured");
+    } else {
+
+      res.render('add-challenge', {
+          user : req.user, // get the user out of session and pass to template
+          id: req.user.id,
+          isAuth: true,
+          errors: errors,
+          challenges: challenges,
+      });
+
+
+      }
+    });
+
+     
+    });
+
+
 
     app.post('/c/d/:challenge_id', (req, res) => {
       let id = req.params.challenge_id;

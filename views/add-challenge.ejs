@@ -1,0 +1,349 @@
+<% include partials/header.ejs %>
+
+<div class="container">
+  <div class="row text-left filters-row">
+    <div class="col-md-12">
+      <h1>
+      Add a Challenge
+      <span style="float:right; font-size: 25px; margin-top:10px">
+        <a href="/profile">Back to Dashboard</a>
+      </span>
+      </h1>
+      <section>
+        <div class="wizard">
+            <div class="wizard-inner">
+                <div class="connecting-line"></div>
+                <ul class="nav nav-tabs" role="tablist">
+
+                    <li role="presentation" class="active">
+                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-folder-open"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="disabled">
+                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-picture"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-ok"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <form role="form" method="post" action="/add-challenge" enctype="multipart/form-data">
+            <input type="text" name="author_id" value="<%= user._id %>" style="display:none" />
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="step1">
+                        
+
+                        <h3 class="tab-title">Overview</h3>
+                        
+                        <div class="form-group">
+                          <label for="title">Title</label>
+                          <input type="text" name="title" id="title" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                          <label for="overview">Short Description</label>
+                          <textarea name="overview" id="overview" class="form-control" rows="1" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="category">Category</label>
+                          <select name="category" class="selectpicker form-control" data-live-search="true" required>
+                            <option value="">Pick a category</option>
+                            <optgroup label="Arts &amp; Crafts">
+                              <option value="Art">Art</option>
+                              <option value="Architecture">Architecture</option>
+                              <option value="Music">Music</option>
+                              <option value="Photography">Photography</option>
+                              <option value="Writing-Publishing">Writing &amp; Publishing</option>
+                              <option value="TV Shows">TV Shows</option>
+                              <option value="Filmmaking">Filmmaking</option>
+                            </optgroup>
+                            <optgroup label="Technology">
+                              <option value="Apps">Apps</option>
+                              <option value="Web">Web</option>
+                              <option value="AI">AI</option>
+                              <option value="VR-AI">VR &amp; AI</option>
+                              <option value="Electronics">Electronics</option>
+                              <option value="Accessories">Accessories</option>
+                              <option value="Video Games">Video Games</option>
+                            </optgroup>
+                            <optgroup label="Society">
+                              <option value="Education">Education</option>
+                              <option value="Business">Business</option>
+                              <option value="Environment">Environment</option>
+                              <option value="Social Innovation">Social Innovation</option>
+                            </optgroup>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="type">Challenge Type</label>
+                          <select name="type" class="selectpicker form-control" required>
+                            <option value="light">Light</option>
+                            <option value="teaser">Teaser</option>
+                            <option value="brainstorm">Brainstorm</option>
+                          </select> 
+                        </div>
+
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="step2">
+                       
+                        <h3>Details</h3>
+
+
+                        <div class="form-group">
+                          <label for="description">Description</label>
+                          <textarea name="description" id="description" class="form-control" rows="5" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="day_limit">For how many days do You want the Challenge to run?</label>
+                          <select name="day_limit" class="selectpicker form-control" id="day_limit" required>
+                            <option>7</option>
+                            <option>15</option>
+                            <option>30</option>
+                            <option>45</option>
+                            <option>60</option>
+                            <option>90</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="perk">Rewards / Perks</label>
+                          <input type="text" name="reward" placeholder="e.g. $50 or a product sample" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                          <label for="rewards_number">How many rewards are you willing to give?</label>
+                          <select id="rewards_number" class="selectpicker form-control" name="rewards_number" required>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option value="more">More than 5</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="public_private">Should the Contributions be Public or Private?</label>
+                          <select name="public_private" class="selectpicker form-control" id="public_private" required>
+                            <option value="true">Public</option>
+                            <option value="false">Private</option>
+                          </select>
+                        </div>
+
+
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="step3">
+                        <h3 class="tab-title">Images &amp; Files</h3>
+
+
+                        <div class="form-group">
+                          <label for="img0">Upload an Image</label>
+                          <input type="file" name="img0" class="form-control" id="img0" required />
+                        </div>
+                        <div class="form-group">
+                          <label for="files_resources">Files &amp; Resources</label>
+                          <input type="file" name="files_resources" id="files_resources" class="form-control" required />
+                        </div>
+
+
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <!-- <li><button type="button" class="btn btn-default next-step">Skip</button></li> -->
+                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="complete">
+                        <h3 class="tab-title">Complete</h3>
+                        <p>You have successfully completed all steps.</p>
+                        <button class="btn btn-primary btn-lg" type="submit">Publish Challenge</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<style>
+  .wizard {
+    margin: 20px auto;
+    background: #fff;
+}
+
+    .wizard .nav-tabs {
+        position: relative;
+        margin: 40px auto;
+        margin-bottom: 0;
+        border-bottom-color: #e0e0e0;
+    }
+
+    .wizard > div.wizard-inner {
+        position: relative;
+    }
+
+.connecting-line {
+    height: 2px;
+    background: #e0e0e0;
+    position: absolute;
+    width: 80%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    z-index: 1;
+}
+
+.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    border: 0;
+    border-bottom-color: transparent;
+}
+
+span.round-tab {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    border-radius: 100px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 25px;
+}
+span.round-tab i{
+    color:#555555;
+}
+.wizard li.active span.round-tab {
+    background: #fff;
+    border: 2px solid #5bc0de;
+    
+}
+.wizard li.active span.round-tab i{
+    color: #5bc0de;
+}
+
+span.round-tab:hover {
+    color: #333;
+    border: 2px solid #333;
+}
+
+.wizard .nav-tabs > li {
+    width: 25%;
+}
+
+.wizard li:after {
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 0;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 5px solid transparent;
+    border-bottom-color: #5bc0de;
+    transition: 0.1s ease-in-out;
+}
+
+.wizard li.active:after {
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 1;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 10px solid transparent;
+    border-bottom-color: #5bc0de;
+}
+
+.wizard .nav-tabs > li a {
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
+}
+
+    .wizard .nav-tabs > li a:hover {
+        background: transparent;
+    }
+
+.wizard .tab-pane {
+    position: relative;
+    padding-top: 50px;
+    padding: 20px 45px;
+}
+
+.tab-title {
+    font-weight: bold;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.wizard h3 {
+    margin-top: 0;
+}
+
+@media( max-width : 585px ) {
+
+    .wizard {
+        width: 90%;
+        height: auto !important;
+    }
+
+    span.round-tab {
+        font-size: 16px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard .nav-tabs > li a {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard li.active:after {
+        content: " ";
+        position: absolute;
+        left: 35%;
+    }
+}
+</style>
+
+<% include partials/footer.ejs %>
