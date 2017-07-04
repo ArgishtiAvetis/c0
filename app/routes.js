@@ -23,13 +23,35 @@ app.get('/', function(req, res) {
 
   var usersArr = [];
 
-  // User.find({}).exec((err, users) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     usersArr.push(users);
-  //   }
-  // });
+
+
+  if (isAuth) {
+    let name = '';
+    let email = '';
+
+    if (req.user.local.email) {
+      name = req.user.local.name;
+      email = req.user.local.email;
+    } else if (req.user.google.name) {
+      name = req.user.google.name;
+      email = req.user.google.email;
+    } else if (req.user.twitter.displayName) {
+      name = req.user.twitter.displayName;
+      email = req.user.twitter.email;
+    } else {
+      name = req.user.facebook.name;
+      email = req.user.facebook.email;
+    }
+
+    if (req.user.new_name) {
+      name = req.user.new_name;
+    }
+
+  } else {
+
+  }
+
+
 
   Challenge.find({
         type: 'light'
@@ -89,6 +111,31 @@ app.get('/', function(req, res) {
                       console.log(teasersUsers);
 
                       if (isAuth) {
+
+                      
+                        let name = '';
+                        let email = '';
+
+                        if (req.user.local.email) {
+                          name = req.user.local.name;
+                          email = req.user.local.email;
+                        } else if (req.user.google.name) {
+                          name = req.user.google.name;
+                          email = req.user.google.email;
+                        } else if (req.user.twitter.displayName) {
+                          name = req.user.twitter.displayName;
+                          email = req.user.twitter.email;
+                        } else {
+                          name = req.user.facebook.name;
+                          email = req.user.facebook.email;
+                        }
+
+                        if (req.user.new_name) {
+                          name = req.user.new_name;
+                        }
+
+                        //getUserName(req.user);
+
                         Challenge.find({
                           author_id: req.user._id
                         })
@@ -104,6 +151,7 @@ app.get('/', function(req, res) {
                               teasers: teaser,
                               brainstorms: brainstorm,
                               isAuth: isAuth,
+                              name: name,
                               challenges: challenges
                             }); // load the index.ejs file
                           }
@@ -117,6 +165,7 @@ app.get('/', function(req, res) {
                           teasers: teaser,
                           brainstorms: brainstorm,
                           isAuth: isAuth,
+                          name: 'dshjf',
                           challenges: []
                         }); // load the index.ejs file
                       }
@@ -139,6 +188,31 @@ app.get('/', function(req, res) {
 app.get('/challenges', function(req, res) {
   isAuth = (req.isAuthenticated()) ? true : false;
 
+  let name = '';
+  let email = '';
+
+if (isAuth) {
+    if (req.user.local.email) {
+    name = req.user.local.name;
+    email = req.user.local.email;
+    } else if (req.user.google.name) {
+      name = req.user.google.name;
+      email = req.user.google.email;
+    } else if (req.user.twitter.displayName) {
+      name = req.user.twitter.displayName;
+      email = req.user.twitter.email;
+    } else {
+      name = req.user.facebook.name;
+      email = req.user.facebook.email;
+    }
+
+    if (req.user.new_name) {
+      name = req.user.new_name;
+    }
+  } else {
+    name = '';
+  }
+
   if (req.query.category || req.query.type || req.query.sortBy) {
 
     var filters = {};
@@ -158,7 +232,8 @@ app.get('/challenges', function(req, res) {
       } else {
         res.render('challenges', {
           challenges: challenges,
-          isAuth: isAuth
+          isAuth: isAuth,
+          name: name
         });
       }
     });
@@ -170,7 +245,8 @@ app.get('/challenges', function(req, res) {
       } else {
         res.render('challenges', {
           challenges: challenges,
-          isAuth: isAuth
+          isAuth: isAuth,
+          name: name
         });
       }
     });
@@ -182,6 +258,31 @@ app.get('/challenges/:category', (req, res) => {
 
   isAuth = (req.isAuthenticated()) ? true : false;
   
+  let name = '';
+  let email = '';
+
+if (isAuth) {
+    if (req.user.local.email) {
+    name = req.user.local.name;
+    email = req.user.local.email;
+    } else if (req.user.google.name) {
+      name = req.user.google.name;
+      email = req.user.google.email;
+    } else if (req.user.twitter.displayName) {
+      name = req.user.twitter.displayName;
+      email = req.user.twitter.email;
+    } else {
+      name = req.user.facebook.name;
+      email = req.user.facebook.email;
+    }
+
+    if (req.user.new_name) {
+      name = req.user.new_name;
+    }
+  } else {
+    name = '';
+  }
+
   Challenge.find({
     category: req.params.category.charAt(0).toUpperCase() + req.params.category.slice(1)
   }).exec((err, challenges) => {
@@ -190,7 +291,8 @@ app.get('/challenges/:category', (req, res) => {
     } else {
       res.render('challenges', {
         challenges: challenges,
-        isAuth: isAuth
+        isAuth: isAuth,
+        name: name
       });
     }
   });
@@ -202,6 +304,31 @@ app.get('/search', (req, res) => {
 
   isAuth = (req.isAuthenticated()) ? true : false;
   
+  let name = '';
+  let email = '';
+
+if (isAuth) {
+    if (req.user.local.email) {
+    name = req.user.local.name;
+    email = req.user.local.email;
+    } else if (req.user.google.name) {
+      name = req.user.google.name;
+      email = req.user.google.email;
+    } else if (req.user.twitter.displayName) {
+      name = req.user.twitter.displayName;
+      email = req.user.twitter.email;
+    } else {
+      name = req.user.facebook.name;
+      email = req.user.facebook.email;
+    }
+
+    if (req.user.new_name) {
+      name = req.user.new_name;
+    }
+  } else {
+    name = '';
+  }
+
   Challenge.find({
     title: 'From my mobile phone lol lol'
   }).exec((err, challenges) => {
@@ -210,7 +337,8 @@ app.get('/search', (req, res) => {
     } else {
       res.render('challenges', {
         challenges: challenges,
-        isAuth: isAuth
+        isAuth: isAuth,
+        name: name
       });
     }
   });
@@ -274,8 +402,9 @@ app.get('/c/:slug', function(req, res) {
       let name = '';
       let email = '';
 
+
       if (user.local.email) {
-        name = user.new_name;
+        name = user.local.name;
         email = user.local.email;
       } else if (user.google.name) {
         name = user.google.name;
@@ -283,12 +412,13 @@ app.get('/c/:slug', function(req, res) {
       } else if (user.twitter.displayName) {
         name = user.twitter.displayName;
         email = user.twitter.email;
-      // } else if (user.new_name) {
-      //   name = user.new_name;
-      //   email = user.local.email;
       } else {
         name = user.facebook.name;
         email = user.facebook.email;
+      }
+
+      if (user.new_name) {
+        name = user.new_name;
       }
 
       console.log(contributors);
@@ -335,44 +465,6 @@ app.get('/c/:slug', function(req, res) {
     }
 });
 
-      // Challenge.findOne({
-      //   slug: req.params.slug
-      // })
-      //   .exec((err, challenge) => {
-      //     if (err) {
-      //       res.send("Error has occured");
-      //     } else {
-      //
-      //
-      //       Challenge.findById(challenge._id, function (err, challenge) {
-      //         if (err) return handleError(err);
-      //
-      //         challenge.views = challenge.views + 1;
-      //         challenge.save(function (err, updated) {
-      //           if (err) return handleError(err);
-      //
-      //         });
-      //       });
-      //
-      //       User.findOne({
-      //         _id: challenge.author_id
-      //       }).exec((err, user) => {
-      //         if (err) {
-      //           res.send('error has cocured!');
-      //         } else {
-      //           var author = user;
-      //         }
-      //       });
-      //
-      //       res.render('single-challenge', {
-      //         challenge: challenge,
-      //         user: author,
-      //         isAuth: isAuth
-      //       });
-      //
-      //
-      //     }
-      //   });
     });
 
 
@@ -436,6 +528,27 @@ app.get('/c/:slug', function(req, res) {
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/profile', isLoggedIn, function(req, res) {
 
+      let name = '';
+      let email = '';
+
+      if (req.user.local.email) {
+        name = req.user.local.name;
+        email = req.user.local.email;
+      } else if (req.user.google.name) {
+        name = req.user.google.name;
+        email = req.user.google.email;
+      } else if (req.user.twitter.displayName) {
+        name = req.user.twitter.displayName;
+        email = req.user.twitter.email;
+      } else {
+        name = req.user.facebook.name;
+        email = req.user.facebook.email;
+      }
+
+      if (req.user.new_name) {
+        name = req.user.new_name;
+      }
+
       Challenge.find({
         author_id: req.user._id
       })
@@ -449,6 +562,7 @@ app.get('/c/:slug', function(req, res) {
               isAuth: true,
               errors: errors,
               challenges: challenges,
+              name: name,
               page: ''
           });
         }
@@ -457,6 +571,13 @@ app.get('/c/:slug', function(req, res) {
 
     app.get('/profile/:page', isLoggedIn, (req, res) => {
         let page = req.params.page;
+
+
+
+        
+
+
+
         Challenge.find({
           author_id: req.user._id
         })
@@ -520,6 +641,28 @@ app.get('/c/:slug', function(req, res) {
   
 app.get('/start-challenge', isLoggedIn, (req, res) => {
 
+  let name = '';
+  let email = '';
+
+  if (req.user.local.email) {
+    name = req.user.local.name;
+    email = req.user.local.email;
+  } else if (req.user.google.name) {
+    name = req.user.google.name;
+    email = req.user.google.email;
+  } else if (req.user.twitter.displayName) {
+    name = req.user.twitter.displayName;
+    email = req.user.twitter.email;
+  } else {
+    name = req.user.facebook.name;
+    email = req.user.facebook.email;
+  }
+
+  if (req.user.new_name) {
+    name = req.user.new_name;
+  }
+
+
   Challenge.find({
     author_id: req.user._id
   })
@@ -534,6 +677,7 @@ app.get('/start-challenge', isLoggedIn, (req, res) => {
           isAuth: true,
           errors: errors,
           challenges: challenges,
+          name: name
       });
 
 
@@ -630,4 +774,27 @@ function isLoggedIn(req, res, next) {
 
     // if they aren't redirect them to the home page
     res.redirect('/login');
+}
+
+function getUserName(user) {
+
+      let name, email;
+
+      if (user.local.email) {
+        name = user.new_name;
+        email = user.local.email;
+      } else if (user.google.name) {
+        name = user.google.name;
+        email = user.google.email;
+      } else if (user.twitter.displayName) {
+        name = user.twitter.displayName;
+        email = user.twitter.email;
+      // } else if (user.new_name) {
+      //   name = user.new_name;
+      //   email = user.local.email;
+      } else {
+        name = user.facebook.name;
+        email = user.facebook.email;
+      }
+
 }
