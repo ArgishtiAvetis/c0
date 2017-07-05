@@ -4,6 +4,11 @@ h1, h2, h3, h4, h5, h6, p {
 	font-family: 'Raleway';
 }
 
+a {
+	color: #0773B2;
+	font-weight: bold;
+}
+
 @media screen and (max-width: 1200px) {
 	.row.challenge-row, .row.challenge-body-row {
 		padding: 0 10px;
@@ -64,7 +69,7 @@ nav.navbar {
 	padding-bottom: 0px;
 	font-size: 19px;
 	text-overflow: ellipsis;
-	overflow: hidden;
+	overflow: hidden;s
 }
 
 .nav li a.navbar-account-c, .nav li a.navbar-account-c.active {
@@ -107,6 +112,7 @@ div.menu-search {
 .navbar-brand {
 	margin: auto;
 	margin-bottom: 5px;
+	margin-top: 2px;
 }
 
 .logo {
@@ -255,13 +261,13 @@ li.top-right-buttons a {
 
 .btn-intro-join {
 	display: block;
-	background: #2E7D32;
+	background: #4DBCAC;/*#2E7D32*/;
 	padding: 10px 15px;
 	margin:auto;
 	color: white;
 	font-size: 20px;
 	font-weight: 700;
-	border: 2px solid #2E7D32;
+	border: 2px solid #4DBCAC;
 	-webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     margin-top: 20px;
@@ -273,8 +279,8 @@ li.top-right-buttons a {
 	background: white;
 	padding: 10px 15px;
 	margin:auto;
-	color: #2E7D32;
-	border: 2px solid #2E7D32;
+	color: #4DBCAC;
+	border: 2px solid #4DBCAC;
 	margin-top: 20px;
 }
 /* /// Intro row */
@@ -375,13 +381,13 @@ div.progress {
 
 .btn-view-all-category {
 
-	background: #2E7D32;
+	background: #4DBCAC;
 	padding: 5px 10px;
 	margin:auto;
 	color: white;
 	font-size: 17px;
 	font-weight: 700;
-	border: 2px solid #2E7D32;
+	border: 2px solid #4DBCAC;
 	-webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
 }
@@ -411,7 +417,7 @@ div.progress {
 }
 
 .last-call-action a.btn-start-challenge {
-	border: 2px solid #2196F3;
+	border: 2px solid #3097d1/*#2196F3*/;
 	padding: 7px 15px;
 	font-size: 20px;
 	margin: 15px;
@@ -419,7 +425,7 @@ div.progress {
 
 .last-call-action a.btn-start-challenge:hover {
 	background: white;
-	color: #2196F3;
+	color: #3097d1;
 }
 
 .last-call-action a.btn-start-thinker {
@@ -443,7 +449,7 @@ div.progress {
 
 .footer-row {
 	padding: 35px 55px;
-	background: #304FFE;
+	background: #3097d1;
 	color: white;
 }
 
