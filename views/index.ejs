@@ -31,7 +31,9 @@
 				<div class="item item-category">
 					<a href="/c/<%= lights[i].slug %>"><img src="/uploads/c/<%= lights[i].img0 %>" alt="<%= lights[i].title %>" class="img-responsive"></a>
 					<div class="item-descr">
-						<h1 class="thumbnail-title"><a href="/c/<%= lights[i].slug %>"><%= lights[i].title %></a>  <br /><span class="badge">15 Ideas</span></h1>
+						<h1 class="thumbnail-title"><a href="/c/<%= lights[i].slug %>"><%= lights[i].title %></a>  <br />
+						<!-- <span class="badge">15 Ideas</span> -->
+						</h1>
 						<p><%= lights[i].overview %></p>
 						<!-- <h3 class="thumbnail-by">by <a href="<%= lights[i].author_id %>"><%= %> -->
 						</a></h3>
@@ -56,7 +58,7 @@
 			</section>
 			<% } %>
 			<section class="col-md-12 text-center col-view-all-category">
-				<a href="/" class="btn btn-view-all-category">View All Light Challenges</a>
+				<a href="/challenges?type=light" class="btn btn-view-all-category">View All Light Challenges</a>
 			</section>
 	</div>
 </div>
@@ -98,7 +100,7 @@
 			</section>
 			<% } %>
 			<section class="col-md-12 text-center col-view-all-category">
-				<a href="/" class="btn btn-view-all-category">View All Teasers</a>
+				<a href="/challenges?type=teaser" class="btn btn-view-all-category">View All Teasers</a>
 			</section>
 	</div>
 </div>
@@ -140,7 +142,7 @@
 			</section>
 			<% } %>
 			<section class="col-md-12 text-center col-view-all-category">
-				<a href="/" class="btn btn-view-all-category">View All Brainstorm Challenges</a>
+				<a href="/challenges?type=brainstorm" class="btn btn-view-all-category">View All Brainstorm Challenges</a>
 			</section>
 	</div>
 </div>
