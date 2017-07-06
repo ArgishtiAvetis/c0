@@ -353,9 +353,10 @@ if (isAuth) {
     name = '';
   }
 
-  Challenge.find({
-    title: 'From my mobile phone lol lol'
-  }).exec((err, challenges) => {
+  Challenge.find(
+      {$text: {$search: req.query.searchterm}
+  })
+  .exec((err, challenges) => {
     if (err) {
       res.send("An Error has occured");
     } else {
