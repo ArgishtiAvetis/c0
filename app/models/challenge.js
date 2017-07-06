@@ -35,5 +35,5 @@ var challengeSchema = mongoose.Schema({
 });
 
 challengeSchema.index({'$**': 'text'});
--
+
 module.exports = mongoose.model('challenge', challengeSchema);
