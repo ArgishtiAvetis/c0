@@ -722,6 +722,31 @@ app.get('/start-challenge', isLoggedIn, (req, res) => {
       });
     });
 
+    app.post('/edit-campaign', (req, res) => {
+
+      var id = req.body.id,
+          title = req.body.title,
+          overview = req.body.overview,
+          description = req.body.description,
+          // type = req.body.type,
+          reward = req.body.reward; // careful
+          // rewards_number = req.body.rewards_number;
+
+      Challenge.update({
+        _id: id
+      }, {
+        $set: {
+          title: title,
+          overview: overview,
+          description: description,
+          // type: type,
+          reward: reward,
+          // rewards_number: rewards_number
+        }
+      }, () => res.redirect('/profile/challenges'));
+
+    });
+
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect : '/profile', // redirect to the secure profile section
