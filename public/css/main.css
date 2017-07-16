@@ -713,6 +713,11 @@ button.green:hover {
 
 /*  */
 
+.edit-campaign {
+	height: 500px;
+	overflow-y: scroll;
+}
+
 .hide {
 	display: none;
 }

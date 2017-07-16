@@ -82,19 +82,19 @@ require('./app/routes.js')(app, passport); // load our routes and pass in our ap
 // POST add a challenge
 app.post('/add-challenge', (req, res) => {
 
-  req.checkBody('title', 'Title is required').notEmpty();
-  req.checkBody('description', 'Description is required').notEmpty();
-  req.checkBody('category', 'Category is required').notEmpty();
-  req.checkBody('type', 'Type is required').notEmpty();
-  var errors = req.validationErrors();
-  if(errors){
-    console.log(errors);
-    // res.render('profile', isLoggedIn, {
-    //   isAuth: true,
-    //  errors: errors,
-    //   user : req.user
-    // });
-  } else {
+  // req.checkBody('title', 'Title is required').notEmpty();
+  // req.checkBody('description', 'Description is required').notEmpty();
+  // req.checkBody('category', 'Category is required').notEmpty();
+  // req.checkBody('type', 'Type is required').notEmpty();
+  // var errors = req.validationErrors();
+  // if(errors){
+  //   console.log(errors);
+  //   // res.render('profile', isLoggedIn, {
+  //   //   isAuth: true,
+  //   //  errors: errors,
+  //   //   user : req.user
+  //   // });
+   // } else {
     
     var img0 = req.files.img0;
     var file0 = req.files.files_resources;
@@ -137,7 +137,75 @@ app.post('/add-challenge', (req, res) => {
       if (err) return console.error(err);
     });
     res.redirect('/profile');
-  } 
+  
+});
+
+app.post('/edit-campaign', (req, res) => {
+
+  var id = req.body.id,
+      title = req.body.title,
+      overview = req.body.overview,
+      description = req.body.description,
+      type = req.body.type,
+      category = req.body.category,
+      reward = req.body.reward,
+      rewards_number = req.body.rewards_number,
+      files_resources = req.body.files_resources,
+      public_private = req.body.public_private;
+
+  if (req.files) {
+    var img0 = req.files.img0
+    console.log("img0 exists!!!!!!  -> " + res.files);
+  }
+
+  var updatedChallenge = {
+    title: title,
+    overview: overview,
+    description: description,
+    reward: reward,
+    rewards_number: rewards_number,
+  }
+
+  if (type) {
+    updatedChallenge.type = type;
+  }
+
+  if (category) {
+    updatedChallenge.category = category;
+  }
+
+  if (public_private) {
+    updatedChallenge.is_public = public_private;
+  }
+
+  if (img0) {
+    img0.mv(__dirname + '/public/uploads/c/' + img0.name, function(err) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('file moved successfully');
+      }
+    });
+    updatedChallenge.img0 = img0.name;
+  }
+
+  if (files_resources) {
+    files_resources.mv(__dirname + '/public/uploads/resources/c/' + files_resources.name, function(err) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('file moved successfully');
+      }
+    });  
+    updatedChallenge.files_resources = files_resources.name;
+  }
+
+  Challenge.update({
+    _id: id
+  }, {
+    $set: updatedChallenge
+  }, () => res.redirect('/profile/challenges'));
+
 });
 
 app.post('/profile/edit-account', (req, res) => {

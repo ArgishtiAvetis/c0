@@ -50,7 +50,7 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h4 class="modal-title">Edit Campaign</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body edit-campaign">
               <form action="/edit-campaign" method="post">
                 <input type="hidden" name="id" value="<%= challenges[i]._id %>" />
                 <div class="form-group">
@@ -62,9 +62,9 @@
                   <textarea name="overview" id="overview" class="form-control" rows="1" required><%= challenges[i].overview %></textarea>
                 </div>
 
-                <!-- <div class="form-group">
-                  <label for="category">Category</label>
-                  <select name="category" class="selectpicker form-control" data-live-search="true" required>
+                <div class="form-group">
+                  <label for="category">Category (currently: <%= challenges[i].category %>)</label>
+                  <select name="category" class="selectpicker form-control" data-live-search="true" >
                     <option value="">Pick a category</option>
                     <optgroup label="Arts &amp; Crafts">
                       <option value="Art">Art</option>
@@ -92,36 +92,53 @@
                     </optgroup>
                   </select>
                 </div>
- -->
-<!--                 <div class="form-group">
-                  <label for="type">Challenge Type</label>
-                  <select name="type" class="selectpicker form-control" required>
+
+                <div class="form-group">
+                  <label for="type">Challenge Type (currently: <%= challenges[i].type %>)</label>
+                  <select name="type" class="selectpicker form-control">
+                    <option value="">Pick a type</option>
                     <option value="light">Light</option>
                     <option value="teaser">Teaser</option>
                     <option value="brainstorm">Brainstorm</option>
                   </select> 
-                </div> -->
-
-                <div class="form-group">
-                  <label for="description">Description</label>
-                  <textarea name="description" id="description" class="form-control" rows="5" required><%= challenges[i].description %></textarea>
                 </div>
+
                  <div class="form-group">
                     <label for="perk">Rewards / Perks</label>
                     <input type="text" name="reward" class="form-control" value="<%= challenges[i].reward %>" required />
                   </div>
                   <div class="form-group">
-                    <label for="rewards_number">How many rewards are you willing to give?</label>
+                    <label for="rewards_number">How many rewards are you willing to give? (currently: <%= challenges[i].rewards_number %>)</label>
                     <select id="rewards_number" class="selectpicker form-control" name="rewards_number" value="<%= challenges[i].rewards_number %>" required>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
                       <option>4</option>
-                      <option value="more">More than 5</option>
+                      <option value="5">More than 5</option>
                     </select>
                   </div>
 
-                
+                <div class="form-group">
+                  <label for="public_private">Should the Contributions be Public or Private? (currently: <% if(challenges[i].is_public) { %>Public<% } else { %>Private<% } %>)
+                  </label>
+                  <select name="public_private" class="selectpicker form-control" id="public_private">
+                    <option value="">Select option</option>
+                    <option value="true">Public</option>
+                    <option value="false">Private</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="img0">Upload an Image</label>
+                  <input type="file" name="img0" class="form-control" id="img0" />
+                </div>
+                <div class="form-group">
+                  <label for="files_resources">Files &amp; Resources</label>
+                  <input type="file" name="files_resources" id="files_resources" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea name="description" id="description" class="form-control" rows="5" required><%= challenges[i].description %></textarea>
+                </div>
              
             </div>
             <div class="modal-footer">
