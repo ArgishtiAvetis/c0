@@ -1,9 +1,29 @@
 <div class="row">
     <div class="col-lg-12">
-    	<h1>My Contributions</h1>
+    	<h1 class="black">My Contributions</h1>
 
 		<% for (let n = 0, len = ideas.length; n < len; n++) { %>
-			<span style="font-size: 20px; color: black"><span class="fa fa-chevron-right"></span> <%= ideas[n].body %></span><br />
+			<div class="contribution-item">
+				<p style="font-size: 20px;" class="black">
+				
+				<% if (n % 2 == 0 && n != 2) { %>
+					<span class="fa fa-check" style="color: green"></span> 
+					<span style="color: green; font-size: 15px;">Approved</span> <br />
+				<%	} %>
+
+				<% if (n % 2 != 0) { %>
+					<span class="fa fa-cogs" style="color: grey"></span> 
+					<span style="color: grey; font-size: 15px;">Pending</span> <br />
+				<%	} %>
+
+				<% if (n == 2) { %>
+					<span class="fa fa-close" style="color: red"></span> 
+					<span style="color: red; font-size: 15px;">Rejected</span> <br />
+				<%	} %>				
+
+				<%= ideas[n].body %></p><br />
+			</div>
 		<% } %>
+
     </div>
 </div>

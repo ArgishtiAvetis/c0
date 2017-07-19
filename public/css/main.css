@@ -722,6 +722,17 @@ button.green:hover {
 	display: none;
 }
 
+.contribution-item {
+	background: white;
+	box-shadow: inset 0 1px 0 hsla(0,0%,100%,.1);
+	border-bottom: 2px solid #eee;
+	margin: 15px 0;
+}
+
+.contribution-item p {
+	padding: 0;
+	margin: 0;
+}
 
 /* MEDIA QUERIES (well, most of them :P )  */
 
