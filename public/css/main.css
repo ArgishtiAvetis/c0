@@ -734,6 +734,10 @@ button.green:hover {
 	margin: 0;
 }
 
+.btn-accept-reject {
+	margin: 5px 15px;
+}
+
 /* MEDIA QUERIES (well, most of them :P )  */
 
 @media screen and (max-width: 1100px) {

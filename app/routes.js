@@ -722,6 +722,35 @@ app.get('/start-challenge', isLoggedIn, (req, res) => {
       });
     });
 
+    app.post('/accept-challenge', (req, res) => {
+
+      let id = req.body.i_id;
+      let source = req.body.i_loc;
+
+      Idea.update({
+        _id: id
+      }, {
+        $set: {
+          is_accepted: 'Accepted',
+        }
+      }, () => res.redirect(source));
+
+    });
+
+    app.post('/reject-challenge', (req, res) => {
+
+      let id = req.body.i_id;
+      let source = req.body.i_loc;
+
+      Idea.update({
+        _id: id
+      }, {
+        $set: {
+          is_accepted: 'Rejected',
+        }
+      }, () => res.redirect(source));
+
+    });
 
 
     // process the signup form

@@ -5,13 +5,17 @@ const ideaSchema = mongoose.Schema({
 	body: String,
 	challenge_id: String,
 	author_id: String,
+	is_accepted: {
+		type: String,
+		default: 'Pending'
+	},
 	is_active: {
 	    type: Boolean,
-		default: true,
+		default: true
 	},
     published: {
         type: Date,
-        default: Date.now
+        default: Date()
 	}
 });
 

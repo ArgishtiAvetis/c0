@@ -79,7 +79,7 @@
 				
 					<% for (let i = 0, len = ideas.length; i < len; i++) { %>
 						<!-- Left-aligned -->
-						<div class="media">
+						<div class="media" style="border-bottom: 1px solid #eee; padding-bottom: 15px;">
 						  <div class="media-left">
 						    <img src="https://www.w3schools.com/bootstrap/img_avatar1.png" class="media-object" style="width:60px">
 						  </div>
@@ -93,6 +93,29 @@
 						    </h4>
 						    <p><%= ideas[i].body %></p>
 						  </div>
+						  <% if (isAuth && challenge.author_id == user._id) { %>
+						  	  <div class="media-right">
+						  	  	<% if (ideas[i].is_accepted == 'Pending') { %>
+						  	  		<h5><span class="black">Status:</span> Pending</h5>
+						  	  		
+						  	  		<form action="/accept-challenge" method="post">
+						  	  			<input type="hidden" name="i_loc" value="/c/<%= challenge.slug %>" />
+						  	  			<input type="hidden" name="i_id" value="<%= ideas[i]._id %>" />
+						  	  			<button type="submit" class="btn btn-sm btn-success btn-accept-reject"><span class="fa fa-check"></span> Accept</button>	
+						  	  		</form>
+
+						  	  		<form action="/reject-challenge" method="post">
+						  	  			<input type="hidden" name="i_loc" value="/c/<%= challenge.slug %>" />
+						  	  			<input type="hidden" name="i_id" value="<%= ideas[i]._id %>" />
+						  	  			<button type="submit" class="btn btn-sm btn-danger btn-accept-reject"><span class="fa fa-close"></span> Reject</button>	
+						  	  		</form>
+						  	  		
+						  	  		
+						  	  	<% 	} else { %>
+						  			<h5><%- (ideas[i].is_accepted == 'Accepted') ? '<span style="color: green" ><span class="fa fa-check"></span> Accepted</span>' : '<span style="color: red" ><span class="fa fa-close"></span> Rejected</span>' %></h5>
+						  	  	<%  }	%>
+						  	  </div>
+						  <%	} %>
 						</div>
 					<%	} %>
 
